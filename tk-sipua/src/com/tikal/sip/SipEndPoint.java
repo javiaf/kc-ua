@@ -10,7 +10,7 @@ public interface SipEndPoint {
 	
 	public void terminate () throws ServerInternalErrorException;
 
-	public SipCall dial(Address remoteParty, Direction direction, SipCallListener callController) throws ServerInternalErrorException;
-	public void options(Address remoteParty, SipCallListener callController) throws ServerInternalErrorException;
+	public SipCall dial(String remoteParty, Direction direction, SipCallListener callController) throws ServerInternalErrorException;
+	public void options(String remoteParty, SipCallListener callController) throws ServerInternalErrorException;
 
 }

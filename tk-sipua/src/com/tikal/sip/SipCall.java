@@ -1,5 +1,6 @@
 package com.tikal.sip;
 
+import javax.media.mscontrol.join.JoinableStream;
 import javax.media.mscontrol.networkconnection.NetworkConnection;
 
 import com.tikal.sip.exception.ServerInternalErrorException;
@@ -7,11 +8,7 @@ import com.tikal.sip.exception.ServerInternalErrorException;
 
 
 
-/**
- * 
- * @author qiang
- *
- */
+
 public interface SipCall {
 	
 	// Control interface
@@ -27,7 +24,7 @@ public interface SipCall {
 	public void removeListener (SipCallListener listener);
 	
 	// Media
-	public NetworkConnection getNetworkConnection();
+	public NetworkConnection getNetworkConnection(JoinableStream.StreamType media);
 	
 	
 }

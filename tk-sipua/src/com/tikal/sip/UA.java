@@ -22,11 +22,6 @@ public interface UA  {
 	public int getLocalPort();
 	public String getProxyAddress();
 	public int getProxyPort();
-	public String getTransport();
-	public int getMaxForwards();
-
-	public SipProvider getSipProvider();
-	public SipStack getSipStack();
 	
 	public void terminate();
 	
