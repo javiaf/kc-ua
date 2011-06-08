@@ -20,8 +20,7 @@ public interface SipCall {
 	public Boolean isConnected();
 	
 	// Callbacks
-	public void addListener (SipCallListener listener);
-	public void removeListener (SipCallListener listener);
+	public void setListener (SipCallListener listener);
 	
 	// Media
 	public NetworkConnection getNetworkConnection(JoinableStream.StreamType media);
