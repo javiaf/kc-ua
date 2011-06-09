@@ -2,10 +2,6 @@ package com.tikal.sip;
 
 import java.text.ParseException;
 
-import javax.sip.SipProvider;
-import javax.sip.SipStack;
-import javax.sip.header.UserAgentHeader;
-
 import com.tikal.sip.exception.ServerInternalErrorException;
 
 
@@ -17,7 +13,7 @@ import com.tikal.sip.exception.ServerInternalErrorException;
  */
 public interface UA  {
 		
-	public UserAgentHeader getUserAgentHeader();
+//	public UserAgentHeader getUserAgentHeader();
 	public String getLocalAddress();
 	public int getLocalPort();
 	public String getProxyAddress();
