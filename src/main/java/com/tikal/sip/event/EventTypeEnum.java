@@ -1,0 +1,26 @@
+package com.tikal.sip.event;
+
+
+public enum EventTypeEnum implements SipEventType{
+	
+	// Call events
+	CALL_REQUEST,
+	CALL_SETUP,
+	CALL_REJECT,
+	CALL_CANCEL,
+	CALL_TERMINATE,
+	CALL_ERROR,
+
+	// End point events
+	INCOMING_CALL,
+
+	REGISTER_USER_SUCESSFUL,
+	REGISTER_USER_NOT_FOUND,
+	REGISTER_USER_FAIL,
+	
+	MEDIA_NOT_SUPPORTED,
+	MEDIA_RESOURCE_NOT_AVAILABLE,
+	
+	SERVER_INTERNAL_ERROR
+
+}
