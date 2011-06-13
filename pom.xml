@@ -6,6 +6,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>tk-sipua</name>
 	<description>Sip User Agent interface for nv-media-server</description>
+	
 	<dependencies>
 		<dependency>
 			<groupId>javax.sip</groupId>
@@ -18,6 +19,7 @@
 			<version>1.0</version>
 		</dependency>
 	</dependencies>
+	
 	<repositories>
 		<repository>
 			<id>Kurento public</id>
