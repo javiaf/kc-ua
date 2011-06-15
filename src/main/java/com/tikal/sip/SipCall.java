@@ -25,5 +25,7 @@ public interface SipCall {
 	// Media
 	public NetworkConnection getNetworkConnection(JoinableStream.StreamType media);
 	
+	public String getRemoteUri();
+	public String getRemoteDisplayName();
 	
 }
