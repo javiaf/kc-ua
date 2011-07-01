@@ -4,8 +4,10 @@
 	<groupId>com.tikal</groupId>
 	<artifactId>tk-sipua</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
+
 	<name>tk-sipua</name>
 	<description>Sip User Agent interface for nv-media-server</description>
+	<url>http://193.147.51.37/site/tk-sipua</url>
 
 	<dependencies>
 		<dependency>
@@ -47,6 +49,11 @@
 		</plugins>
 	</build>
 
-
+	<distributionManagement>
+		<site>
+			<id>maven-site</id>
+			<url>scp://193.147.51.37/var/www/site/tk-sipua/</url>
+		</site>
+	</distributionManagement>
 
 </project>
