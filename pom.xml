@@ -83,4 +83,9 @@
 		</snapshotRepository>
 	</distributionManagement>
 
+	<scm>
+		<connection>scm:svn:http://www.kurento.com/svn/mms_gstreamer/src/tk-sipua/trunk</connection>
+		<developerConnection>scm:svn:https://www.kurento.com/svn/mms_gstreamer/src/tk-sipua/trunk</developerConnection>
+		<url>scm:svn:https://www.kurento.com/svn/mms_gstreamer/src</url>
+	</scm>
 </project>
