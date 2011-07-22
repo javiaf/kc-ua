@@ -7,7 +7,7 @@
 
 	<name>tk-sipua</name>
 	<description>Sip User Agent interface for nv-media-server</description>
-	<url>http://193.147.51.37/site/tk-sipua</url>
+	<url>http://repository.kurento.com/site/tk-sipua</url>
 
 	<dependencies>
 		<dependency>
@@ -52,7 +52,7 @@
 	<distributionManagement>
 		<site>
 			<id>maven-site</id>
-			<url>scp://193.147.51.37/var/www/site/tk-sipua/${project.version}</url>
+			<url>scp://repository.kurento.com/var/www/site/tk-sipua/${project.version}</url>
 		</site>
 	</distributionManagement>
 
