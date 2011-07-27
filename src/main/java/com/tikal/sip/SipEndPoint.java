@@ -1,8 +1,6 @@
 package com.tikal.sip;
 
-import javax.media.mscontrol.join.Joinable.Direction;
-import javax.sip.address.Address;
-
+import com.tikal.mscontrol.join.Joinable.Direction;
 import com.tikal.sip.exception.ServerInternalErrorException;
 
 
