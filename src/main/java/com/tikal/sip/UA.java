@@ -21,6 +21,6 @@ public interface UA  {
 	
 	public void terminate();
 	
-	public SipEndPoint registerEndPoint(String user, String realm, int expires, SipEndPointListener handler) throws ParseException, ServerInternalErrorException;
+	public SipEndPoint registerEndPoint(String user, String realm, String password, int expires, SipEndPointListener handler) throws ParseException, ServerInternalErrorException;
 	
 }
