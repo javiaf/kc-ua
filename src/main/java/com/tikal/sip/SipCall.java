@@ -12,6 +12,8 @@ public interface SipCall {
 	public void reject() throws ServerInternalErrorException;
 
 	public void hangup() throws ServerInternalErrorException;
+	
+	public void cancel() throws ServerInternalErrorException;
 
 	// monitor interface
 	public Boolean isConnected();
