@@ -1,8 +1,8 @@
-package com.tikal.sip;
+package com.kurento.commons.sip;
 
-import com.tikal.mscontrol.join.JoinableStream;
-import com.tikal.mscontrol.networkconnection.NetworkConnection;
-import com.tikal.sip.exception.ServerInternalErrorException;
+import com.kurento.commons.mscontrol.join.JoinableStream;
+import com.kurento.commons.mscontrol.networkconnection.NetworkConnection;
+import com.kurento.commons.sip.exception.ServerInternalErrorException;
 
 public interface SipCall {
 

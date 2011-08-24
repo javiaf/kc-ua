@@ -1,4 +1,4 @@
-package com.tikal.sip.event;
+package com.kurento.commons.sip.event;
 
 
 public enum EventTypeEnum implements SipEventType{

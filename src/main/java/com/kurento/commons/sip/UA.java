@@ -1,8 +1,8 @@
-package com.tikal.sip;
+package com.kurento.commons.sip;
 
 import java.text.ParseException;
 
-import com.tikal.sip.exception.ServerInternalErrorException;
+import com.kurento.commons.sip.exception.ServerInternalErrorException;
 
 
 

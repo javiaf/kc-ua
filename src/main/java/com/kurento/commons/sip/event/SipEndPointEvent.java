@@ -1,10 +1,10 @@
-package com.tikal.sip.event;
+package com.kurento.commons.sip.event;
 
 import java.util.EventObject;
 
-import com.tikal.sip.SipCall;
-import com.tikal.sip.SipEndPoint;
-import com.tikal.sip.event.SipEndPointEvent;
+import com.kurento.commons.sip.SipCall;
+import com.kurento.commons.sip.SipEndPoint;
+import com.kurento.commons.sip.event.SipEndPointEvent;
 
 public class SipEndPointEvent extends EventObject {
 

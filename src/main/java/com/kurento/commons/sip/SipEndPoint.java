@@ -1,7 +1,7 @@
-package com.tikal.sip;
+package com.kurento.commons.sip;
 
-import com.tikal.mscontrol.join.Joinable.Direction;
-import com.tikal.sip.exception.ServerInternalErrorException;
+import com.kurento.commons.sip.exception.ServerInternalErrorException;
+import com.kurento.commons.mscontrol.join.Joinable.Direction;
 
 
 public interface SipEndPoint {

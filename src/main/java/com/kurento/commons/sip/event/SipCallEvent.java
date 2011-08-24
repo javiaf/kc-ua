@@ -1,8 +1,8 @@
-package com.tikal.sip.event;
+package com.kurento.commons.sip.event;
 
 import java.util.EventObject;
 
-import com.tikal.sip.SipCall;
+import com.kurento.commons.sip.SipCall;
 
 public class SipCallEvent extends EventObject {
 

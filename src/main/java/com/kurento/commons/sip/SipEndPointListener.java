@@ -1,6 +1,6 @@
-package com.tikal.sip;
+package com.kurento.commons.sip;
 
-import com.tikal.sip.event.SipEndPointEvent;
+import com.kurento.commons.sip.event.SipEndPointEvent;
 
 public interface SipEndPointListener  {
 		
