@@ -4,7 +4,6 @@ import java.util.EventObject;
 
 import com.kurento.commons.sip.SipCall;
 import com.kurento.commons.sip.SipEndPoint;
-import com.kurento.commons.sip.event.SipEndPointEvent;
 
 public class SipEndPointEvent extends EventObject {
 
