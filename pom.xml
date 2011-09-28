@@ -6,9 +6,30 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<name>SIP User Agent API</name>
-	<description>Sip User Agent interface</description>
-	<url>http://repository.kurento.com/site/kas-sipua</url>
+	<description>Sip User Agent interface library.</description>
+	<url>www.kurento.com/docs/kas-sipua</url>
 
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<organization>
+		<name>Kurento</name>
+		<url>http://www.kurento.com</url>
+	</organization>
+	<developers>
+		<developer>
+			<id>jlopez</id>
+  			<name>Javier López Fernández</name>
+		</developer>
+	</developers>
+	<mailingLists>
+		<mailingList>
+			<name>Kurento</name>
+			<subscribe>http://groups.google.com/group/kurento/subscribe</subscribe>
+			<post>http://groups.google.com/group/kurento/post</post>
+			<archive>http://groups.google.com/group/kurento/about</archive>
+		</mailingList>
+	</mailingLists>
 	<dependencies>
 		<dependency>
 			<groupId>javax.sip</groupId>
