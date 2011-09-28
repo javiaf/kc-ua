@@ -19,7 +19,7 @@
 	<developers>
 		<developer>
 			<id>jlopez</id>
-  			<name>Javier López Fernández</name>
+			<name>Javier López Fernández</name>
 		</developer>
 	</developers>
 	<mailingLists>
@@ -163,8 +163,9 @@
 	</distributionManagement>
 
 	<scm>
-		<connection>scm:git:ssh://repository.kurento.com/git/kas-sipua</connection>
+		<connection>scm:http://kurento.googlecode.com</connection>
 		<developerConnection>scm:git:ssh://repository.kurento.com/git/kas-sipua</developerConnection>
-		<url>scm:git:ssh://repository.kurento.com/git/kas-sipua</url>
+		<url>https://repository.kurento.com/git/kurento-android-sdk/?p=kas-sipua</url>
 	</scm>
+	
 </project>
