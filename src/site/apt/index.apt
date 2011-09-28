@@ -35,7 +35,7 @@ Kurento Android SIP User Agent
 	 	* Digest-based authentication supported.
 	 
 	 * Dial: Creates a new outgoing call and initiates the SIP negotiation with the called party specified. 
-	 Dial operation is gestioned by SipEndpoint generating an SipCall.
+	 Dial operation is managed by SipEndpoint generating an SipCall.
 	 
 	 * CallManagement:
 	 
