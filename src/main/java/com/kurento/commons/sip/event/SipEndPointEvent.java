@@ -107,7 +107,7 @@ public class SipEndPointEvent extends EventObject {
 	/**
 	 * Returns the event type
 	 * 
-	 * @return
+	 * @return Event type
 	 */
 	public SipEventType getEventType() {
 		return eventType;
