@@ -4,16 +4,13 @@
 	<version position="right" />
 	<bannerLeft>
 		<name>Kurento Sip User Agent</name>
-		<src>http://www.kurento.com/kurento/sites/all/themes/bartikplus/logo.png</src>
+		<src>http://www.kurento.com/sites/all/themes/bartikplus/logo.png</src>
 		<href>http://www.kurento.com/docs/kas-sipua</href>
 	</bannerLeft>
 	<body>
 		<links>
 			<item name="Kurento" href="http://www.kurento.com/" />
 		</links>
-		<menu name="Kurento Android SIP User Agent">
-			<item name="Main" href="./index.html" />
-		</menu>
 
 		<menu ref="reports" />
 
