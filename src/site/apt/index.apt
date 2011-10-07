@@ -9,9 +9,9 @@ Kurento Android SIP User Agent
 
 * Introduction
 
-	KAS-SIPUA is a SIP User Agent API, based on {{{http://java.net/projects/jain-sip/}jain-sip}}.
-	It manages SIP protocol, providing a high level API to services, allowing developers to easily write 
-	SIP enabled Android applications.
+	KAS-SIPUA provides a generic SIP User Agent interface based on {{{http://java.net/projects/jain-sip/}jain-sip}},
+	that provides a high level API to services, allowing developers to easily write 
+	SIP enabled applications.
 
 * Components
 
@@ -26,12 +26,13 @@ Kurento Android SIP User Agent
 
 * Capabilities
 	
-	 * <<Registration>>: Kurento User Agent allow sip registration according  to 
-	 {{{http://www.ietf.org/rfc/rfc3261.txt} RFC3261}}. Register operation is performed by UA, based
-	  on a SIPURI and it generates an SipEndpoint. Digest-based authentication is supported.
+	 * <<Registration>>: Kurento User Agent allows registration of a SIP contact, according  to 
+	 {{{http://www.ietf.org/rfc/rfc3261.txt} RFC3261}}. Digest-based authentication is supported.
 	 
-	 * <<Dial>>: Kurento <<<SipEndPoint>>> can initiate an outgoing call with the called party specified. 
-	 Dial operation generates <<<SipCall>>> objects.
+	 * <<Dial>>: Kurento <<<SipEndPoint>>> can initiate outgoing calls. <<<SipCall>>> object is used to
+	 manage SIP call life cycle.
+	 
+	 * <<Reception>>: <<<SipEndPoint>>> can receive incoming requests. Requires a handler to manage call logic 
 	 
 	 * <<CallManagement>>:
 	 
@@ -45,7 +46,7 @@ Kurento Android SIP User Agent
 	 	
 * Event model
 
-	Kurento SIP User Agent is based on the Java event model for message passing. Next diagram shows 
-	the UA state diagram and transitions driven by SIP events
+	Kurento SIP User Agent is based on the Java event model. Next Figure shows 
+	the UA state diagram and transitions driven by SIP events.
 
 [./images/event_diagram.png]
