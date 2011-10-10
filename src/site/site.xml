@@ -3,9 +3,10 @@
 	<publishDate position="right" />
 	<version position="right" />
 	<bannerLeft>
+		<!-- If src and url at pom.xml have the same host, the path is set relative by manven-site-plugin -->
 		<name>Kurento Sip User Agent</name>
 		<src>http://www.kurento.com/sites/all/themes/bartikplus/logo.png</src>
-		<href>http://www.kurento.com/docs/kas-sipua</href>
+		<href>http://www.kurento.com</href>
 	</bannerLeft>
 	<body>
 		<links>
