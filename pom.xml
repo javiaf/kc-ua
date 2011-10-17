@@ -163,8 +163,8 @@
 
 	<scm>
 		<connection>scm:http://kurento.googlecode.com</connection>
-		<developerConnection>scm:git:ssh://repository.kurento.com/git/kas-sipua</developerConnection>
-		<url>https://repository.kurento.com/git/kurento-android-sdk/?p=kas-sipua</url>
+                <developerConnection>scm:git:ssh://git@repository.kurento.com/kas/kas-sipua.git</developerConnection>
+                <url>https://repository.kurento.com/git/kurento-android-sdk/?p=kas-sipua.git</url>
 	</scm>
 	
 </project>
