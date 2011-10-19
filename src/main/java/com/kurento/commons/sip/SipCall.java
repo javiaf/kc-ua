@@ -13,7 +13,7 @@ import com.kurento.commons.sip.exception.ServerInternalErrorException;
  * and remote User Agent with an interface designed to emulate the phone model
  * of use as much as possible.
  * <p>
- * SipCall can be created by calling the {@link SipEndPoint.dial()} method or as
+ * SipCall can be created by calling the {@link SipEndPoint#dial(String, SipCallListener) dial} method or as
  * a result of an INVITE message reception. First calls are called outgoing
  * (initiated by the local peer) while the seconds are called incoming
  * (initiated by the remote peer)
@@ -26,7 +26,7 @@ public interface SipCall {
 	// Control interface
 	/**
 	 * This method provides the control mechanism to accept incoming calls
-	 * notified by {@Link SipEndPoint}. A 200 OK message will be sent to
+	 * notified by {@link SipEndPoint}. A 200 OK message will be sent to
 	 * the remote peer. Before incoming calls are notified to the listener it
 	 * has been verified a common format exists for the communication, otherwise
 	 * the call is automatically rejected silently
@@ -39,7 +39,7 @@ public interface SipCall {
 
 	/**
 	 * This method provides the control mechanism to reject incoming calls
-	 * notified by {@Link SipEndPoint}
+	 * notified by {@link SipEndPoint}
 	 * 
 	 * @throws ServerInternalErrorException
 	 *             If call is not incoming or Dialog is not in early state an
@@ -62,7 +62,7 @@ public interface SipCall {
 	 * 
 	 * @throws ServerInternalErrorException
 	 *             if the call has not been initiated by local peer or Dialog is
-	 *             not in a eraly stage
+	 *             not in a early stage
 	 */
 	public void cancel() throws ServerInternalErrorException;
 
@@ -89,16 +89,14 @@ public interface SipCall {
 
 	// Media
 	/**
-	 * This method returns the {@link -linkoffline
-	 * http://www.kurento.com/docs/kc-mscontrol/apidocs/com/kurento
-	 * /commons/mscontrol/networkconnection/NetworkConnection.html
-	 * NetworkConnection} associated to this call. NetworkConnection is the
+	 * This method returns the NetworkConnection 
+	 * associated to this call. NetworkConnection is the
 	 * class that actually performs the media negotiation and provides control
 	 * interface to the media EndPoint. Once the call setup is completed
 	 * successfully, the network connection can be used to access the streams
 	 * (audio and video) to connect to devices (camera, display...)
 	 * 
-	 * @Return a media EndPoint when call setup is completed successfully,
+	 * @return Media EndPoint when call setup is completed successfully,
 	 *         otherwise null
 	 * 
 	 */
