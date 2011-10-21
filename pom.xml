@@ -125,13 +125,6 @@
 					<locales>en</locales>
 					<encoding>UTF-8</encoding>
 				</configuration>
-<!--				<dependencies>-->
-<!--					<dependency>-->
-<!--						<groupId>org.apache.maven.wagon</groupId>-->
-<!--						<artifactId>wagon-ssh</artifactId>-->
-<!--						<version>1.0-beta-7</version>-->
-<!--					</dependency>-->
-<!--				</dependencies>-->
 			</plugin>
 		</plugins>
 
@@ -173,8 +166,8 @@
 
 	<scm>
 		<connection>scm:http://kurento.googlecode.com</connection>
-                <developerConnection>scm:git:ssh://git@repository.kurento.com/kas/kas-sipua.git</developerConnection>
-                <url>https://repository.kurento.com/git/kurento-android-sdk/?p=kas-sipua.git</url>
+		<developerConnection>scm:git:ssh://git@repository.kurento.com/kas/kas-sipua.git</developerConnection>
+		<url>https://repository.kurento.com/git/kurento-android-sdk/?p=kas-sipua.git</url>
 	</scm>
 
 	<licenses>
