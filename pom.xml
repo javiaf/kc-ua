@@ -33,11 +33,6 @@
 	</mailingLists>
 	<dependencies>
 		<dependency>
-			<groupId>javax.sip</groupId>
-			<artifactId>jain-sip-api</artifactId>
-			<version>1.2</version>
-		</dependency>
-		<dependency>
 			<groupId>com.kurento.commons</groupId>
 			<artifactId>kc-mscontrol</artifactId>
 			<version>1.0.0-RC-1</version>
