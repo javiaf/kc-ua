@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="Kurento Android SIP User Agent">
+<project name="Kurento User Agent">
 	<publishDate position="right" />
 	<version position="right" />
 	<bannerLeft>
 		<!-- If src and url at pom.xml have the same host, the path is set relative by manven-site-plugin -->
-		<name>Kurento Sip User Agent</name>
+		<name>Kurento User Agent</name>
 		<src>http://www.kurento.com/sites/all/themes/bartikplus/logo.png</src>
 		<href>http://www.kurento.com</href>
 	</bannerLeft>

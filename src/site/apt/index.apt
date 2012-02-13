@@ -1,38 +1,36 @@
 	------
-	Kurento Android SIP User Agent
+	Kurento User Agent
 	------
 	------
 	Date
 	------
 
-Kurento Android SIP User Agent
+Kurento User Agent
 
 * Introduction
 
-	KAS-SIPUA provides a generic SIP User Agent interface based on {{{http://java.net/projects/jain-sip/}jain-sip}},
-	that provides a high level API to services, allowing developers to easily write 
-	SIP enabled applications.
+	KC-UA provides a generic User Agent interface that provides a high level API to services,
+	allowing developers to easily write communication applications.
 
 * Components
 
-	* <<<UA>>> : SIP User Agent interface. This component manages SIP protocol internals.
+	* <<<UA>>> : User Agent interface. This component manages protocol internals.
 	
-	* <<<SipEndPoint>>>: Logical entity associated to a SIPURI. Any SIP call 
-	addressed to that SIPURI will be multiplexed by the <<<UA>>>. It also provides an interface for
-	SIPURI management and call generation (dial from this SIPURI)
+	* <<<EndPoint>>>: Logical entity associated to a URI. Any call
+	addressed to that URI will be multiplexed by the <<<UA>>>. It also provides an interface for
+	URI management and call generation (dial from this URI).
 	
-	* <<<SipCall>>>: This object wraps SIP dialog and provides a telephone like control interface. Actions
+	* <<<Call>>>: This object wraps the dialog and provides a telephone like control interface. Actions
 	resembles phone model of use: accept call, reject call, terminate call, etc.
 
 * Capabilities
 	
-	 * <<Registration>>: Kurento User Agent allows registration of a SIP contact, according  to 
-	 {{{http://www.ietf.org/rfc/rfc3261.txt} RFC3261}}. Digest-based authentication is supported.
+	 * <<Registration>>: Kurento User Agent allows registration of a contact.
 	 
-	 * <<Dial>>: Kurento <<<SipEndPoint>>> can initiate outgoing calls. <<<SipCall>>> object is used to
-	 manage SIP call life cycle.
+	 * <<Dial>>: Kurento <<<EndPoint>>> can initiate outgoing calls. <<<Call>>> object is used to
+	 manage call life cycle.
 	 
-	 * <<Reception>>: <<<SipEndPoint>>> can receive incoming requests. Requires a handler to manage call logic 
+	 * <<Reception>>: <<<EndPoint>>> can receive incoming requests. Requires a handler to manage call logic 
 	 
 	 * <<CallManagement>>:
 	 
@@ -46,7 +44,7 @@ Kurento Android SIP User Agent
 	 	
 * Event model
 
-	Kurento SIP User Agent is based on the Java event model. Next Figure shows 
-	the UA state diagram and transitions driven by SIP events.
+	Kurento User Agent is based on the Java event model. Next Figure shows 
+	the UA state diagram and transitions driven by events.
 
 [./images/event_diagram.png]
