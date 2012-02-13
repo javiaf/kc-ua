@@ -4,7 +4,7 @@ import com.kurento.commons.ua.event.EndPointEvent;
 
 /**
  * This interface must be implemented by applications willing to receive
- * information from SipEndPoints in the form of {@link EndPointEvent}. Application is
+ * information from EndPoints in the form of {@link EndPointEvent}. Application is
  * responsible of event management and actions to be performed will depend on the model of use
  * 
  * @author Kurento

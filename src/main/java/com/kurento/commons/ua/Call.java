@@ -9,7 +9,7 @@ import com.kurento.commons.sdp.enums.Mode;
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
- * The Call provides a management interface to a SIP Dialog between the local
+ * The Call provides a management interface to a Dialog between the local
  * and remote User Agent with an interface designed to emulate the phone model
  * of use as much as possible.
  * <p>
@@ -118,7 +118,7 @@ public interface Call {
 	public Map<MediaType, Mode> getMediaTypesModes();
 
 	/**
-	 * Get SipUri of remote peer for this call
+	 * Get Uri of remote peer for this call
 	 * 
 	 * @return String with remote peer URI
 	 */
