@@ -1,4 +1,4 @@
-package com.kurento.commons.sip.exception;
+package com.kurento.commons.ua.exception;
 
 public class ServerInternalErrorException extends Exception {
 	private static final long serialVersionUID = 1L;

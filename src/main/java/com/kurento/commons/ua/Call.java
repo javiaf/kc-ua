@@ -1,4 +1,4 @@
-package com.kurento.commons.sip;
+package com.kurento.commons.ua;
 
 import java.util.Map;
 
@@ -6,14 +6,14 @@ import com.kurento.commons.mscontrol.join.JoinableStream;
 import com.kurento.commons.mscontrol.networkconnection.NetworkConnection;
 import com.kurento.commons.sdp.enums.MediaType;
 import com.kurento.commons.sdp.enums.Mode;
-import com.kurento.commons.sip.exception.ServerInternalErrorException;
+import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
- * The SipCall provides a management interface to a SIP Dialog between the local
+ * The Call provides a management interface to a SIP Dialog between the local
  * and remote User Agent with an interface designed to emulate the phone model
  * of use as much as possible.
  * <p>
- * SipCall can be created by calling the {@link SipEndPoint#dial(String, SipCallListener) dial} method or as
+ * Call can be created by calling the {@link EndPoint#dial(String, CallListener) dial} method or as
  * a result of an INVITE message reception. First calls are called outgoing
  * (initiated by the local peer) while the seconds are called incoming
  * (initiated by the remote peer)
@@ -21,12 +21,12 @@ import com.kurento.commons.sip.exception.ServerInternalErrorException;
  * @author Kurento
  * 
  */
-public interface SipCall {
+public interface Call {
 
 	// Control interface
 	/**
 	 * This method provides the control mechanism to accept incoming calls
-	 * notified by {@link SipEndPoint}. A 200 OK message will be sent to
+	 * notified by {@link EndPoint}. A 200 OK message will be sent to
 	 * the remote peer. Before incoming calls are notified to the listener it
 	 * has been verified a common format exists for the communication, otherwise
 	 * the call is automatically rejected silently
@@ -39,7 +39,7 @@ public interface SipCall {
 
 	/**
 	 * This method provides the control mechanism to reject incoming calls
-	 * notified by {@link SipEndPoint}
+	 * notified by {@link EndPoint}
 	 * 
 	 * @throws ServerInternalErrorException
 	 *             If call is not incoming or Dialog is not in early state an
@@ -58,7 +58,7 @@ public interface SipCall {
 
 	/**
 	 * Provides the control mechanism to cancel an outgoing call initiated by a
-	 * local {@link SipEndPoint}
+	 * local {@link EndPoint}
 	 * 
 	 * @throws ServerInternalErrorException
 	 *             if the call has not been initiated by local peer or Dialog is
@@ -77,7 +77,7 @@ public interface SipCall {
 	/**
 	 * Add a new listener object that will receive call events
 	 */
-	public void addListener(SipCallListener listener);
+	public void addListener(CallListener listener);
 
 	/**
 	 * Remove an object from the list of elements receiving call event
@@ -85,7 +85,7 @@ public interface SipCall {
 	 * 
 	 * @param listener
 	 */
-	public void removeListener(SipCallListener listener);
+	public void removeListener(CallListener listener);
 
 	// Media
 	/**

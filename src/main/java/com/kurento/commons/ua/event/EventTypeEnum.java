@@ -1,7 +1,7 @@
-package com.kurento.commons.sip.event;
+package com.kurento.commons.ua.event;
 
 
-public enum EventTypeEnum implements SipEventType{
+public enum EventTypeEnum implements EventType{
 	
 	// Call events
 	CALL_REQUEST,
