@@ -14,7 +14,7 @@
 
 		<!-- Dependency versions -->
 		<kcMsControlVersion>1.1.0</kcMsControlVersion>
-		<kcMediaSpecVersion>1.1.0-RC-1</kcMediaSpecVersion>
+		<kcMediaSpecVersion>1.2.0</kcMediaSpecVersion>
 	</properties>
 
 	<organization>
