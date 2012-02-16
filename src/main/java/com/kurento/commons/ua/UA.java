@@ -5,8 +5,14 @@ import java.text.ParseException;
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
- * User Agent is the software element thats manages protocol internals.
- * Its functions are
+ * The User Agent (UA) is the common interface provided by communications
+ * components to applications. There will be an UA implementation for each
+ * domain and platform where Kurento connects <br>
+ * The UA can host multiple EndPoints, each one with a single URI representing a
+ * service point or user. The UA can host multiple EndPoints, being able to manage
+ * simultaneously communications for different users.
+ * <br> Th User Agent is the software element that manages protocol internals.
+ * Its functions are:
  * <ul>
  * <li>Encode and decode messages. It must be able to handle header values
  * <li>Send and receive packets
@@ -24,24 +30,28 @@ public interface UA {
 	 * Returns IP address where stack listens
 	 * @return Local IP address
 	 */
+	@Deprecated
 	public String getLocalAddress();
 
 	/**
 	 * Returns port number where local stack is binded
 	 * @return Local port
 	 */
+	@Deprecated
 	public int getLocalPort();
 
 	/**
 	 * Returns Proxy IP address where messages are sent
 	 * @return Proxy address
 	 */
+	@Deprecated
 	public String getProxyAddress();
 
 	/**
 	 * Returns Proxy port number where messages are sent
 	 * @return Proxy port
 	 */
+	@Deprecated
 	public int getProxyPort();
 
 	/**
