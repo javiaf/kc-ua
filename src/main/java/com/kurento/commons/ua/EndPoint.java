@@ -55,6 +55,7 @@ public interface EndPoint {
 	 * @param callController
 	 * @throws ServerInternalErrorException
 	 */
+	@Deprecated
 	public void options(String remoteParty, CallListener callController)
 			throws ServerInternalErrorException;
 

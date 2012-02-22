@@ -18,46 +18,43 @@ public class CallEvent extends EventObject {
 	/**
 	 * Call negotiation has completed successfully and media channels are setup
 	 */
-	public static final EventType CALL_SETUP = EventTypeEnum.CALL_SETUP;
-	
+	public static final CallEventEnum CALL_SETUP = CallEventEnum.CALL_SETUP;
 	/**
 	 * Call rejected by the called party
 	 */
-	public static final EventType CALL_REJECT = EventTypeEnum.CALL_REJECT;
-	
+	public static final CallEventEnum CALL_REJECT = CallEventEnum.CALL_REJECT;
 	/**
 	 * Call canceled by the calling party
 	 */
-	public static final EventType CALL_CANCEL = EventTypeEnum.CALL_CANCEL;
-	
+	public static final CallEventEnum CALL_CANCEL = CallEventEnum.CALL_CANCEL;
 	/**
 	 * Call terminated (hang up) by one of the parties
 	 */
-	public static final EventType CALL_TERMINATE = EventTypeEnum.CALL_TERMINATE;
-	
+	public static final CallEventEnum CALL_TERMINATE = CallEventEnum.CALL_TERMINATE;
 	/**
 	 * Call setup failure due to a protocol problem
 	 */
-	public static final EventType CALL_ERROR = EventTypeEnum.CALL_ERROR;
-
+	public static final CallEventEnum CALL_ERROR = CallEventEnum.CALL_ERROR;
 	/**
 	 * Call setup failure due to incompatible media formats
 	 */
-	public static final EventType MEDIA_NOT_SUPPORTED = EventTypeEnum.MEDIA_NOT_SUPPORTED;
-	
+	public static final CallEventEnum MEDIA_NOT_SUPPORTED = CallEventEnum.MEDIA_NOT_SUPPORTED;
 	/**
 	 * Call setup failure due to lack of media resources. No ports available
 	 */
-	public static final EventType MEDIA_RESOURCE_NOT_AVAILABLE = EventTypeEnum.MEDIA_RESOURCE_NOT_AVAILABLE;
-
+	public static final CallEventEnum MEDIA_RESOURCE_NOT_AVAILABLE = CallEventEnum.MEDIA_RESOURCE_NOT_AVAILABLE;
 	/**
 	 * Internal error within the local party prevents a normal negotiation flow
 	 */
-	public static final EventType SERVER_INTERNAL_ERROR = EventTypeEnum.SERVER_INTERNAL_ERROR;
+	public static final CallEventEnum SERVER_INTERNAL_ERROR = CallEventEnum.SERVER_INTERNAL_ERROR;
+	/**
+	 * Call requested
+	 */
+	public static final CallEventEnum CALL_REQUEST = CallEventEnum.CALL_REQUEST;
+	
+	private CallEventEnum eventType;
 
-	private EventType eventType;
-
-	public CallEvent(EventType eventType, Call source) {
+	public CallEvent(CallEventEnum eventType, Call source) {
 		super(source);
 		this.eventType = eventType;
 	}
@@ -81,7 +78,7 @@ public class CallEvent extends EventObject {
 	 * Set the event that has to be notified
 	 * @param eventType
 	 */
-	public void setEventType(EventType eventType) {
+	public void setEventType(CallEventEnum eventType) {
 		this.eventType = eventType;
 	}
 
@@ -89,7 +86,7 @@ public class CallEvent extends EventObject {
 	 * Returns the event type
 	 * @return Event type
 	 */
-	public EventType getEventType() {
+	public CallEventEnum getEventType() {
 		return eventType;
 	}
 

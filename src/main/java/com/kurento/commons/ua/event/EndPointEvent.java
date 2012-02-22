@@ -15,36 +15,39 @@ import com.kurento.commons.ua.EndPoint;
 public class EndPointEvent extends EventObject {
 
 	private static final long serialVersionUID = 6307930313482035976L;
-
+	
 	/**
-	 * This event signals the UA received a call INVITE for the EndPoint
-	 * URI
+	 * This event signals the UA received a call INVITE for the EndPoint URI
 	 */
-	public static final EventType INCOMING_CALL = EventTypeEnum.INCOMING_CALL;
-
+	public static final EndpointEventEnum INCOMING_CALL = EndpointEventEnum.INCOMING_CALL;
 	/**
 	 * This event signals the UA successfully registered the URI
 	 */
-	public static final EventType REGISTER_USER_SUCESSFUL = EventTypeEnum.REGISTER_USER_SUCESSFUL;
-
+	public static final EndpointEventEnum REGISTER_USER_SUCESSFUL = EndpointEventEnum.REGISTER_USER_SUCESSFUL;
 	/**
-	 * This event signals the REGISTER rejected to register the URI with a
-	 * 403 code
+	 * This event signals the REGISTER rejected to register the URI with a 403
+	 * code
 	 */
-	public static final EventType REGISTER_USER_NOT_FOUND = EventTypeEnum.REGISTER_USER_NOT_FOUND;
-
+	public static final EndpointEventEnum REGISTER_USER_NOT_FOUND = EndpointEventEnum.REGISTER_USER_NOT_FOUND;
 	/**
 	 * This event signals a register failure with 4xx response
 	 */
-	public static final EventType REGISTER_USER_FAIL = EventTypeEnum.REGISTER_USER_FAIL;
-
+	public static final EndpointEventEnum REGISTER_USER_FAIL = EndpointEventEnum.REGISTER_USER_FAIL;
 	/**
 	 * This event signals an internal UA error preventing the REGISTER operation
 	 * to complete sucessfully
 	 */
-	public static final EventType SERVER_INTERNAL_ERROR = EventTypeEnum.SERVER_INTERNAL_ERROR;
+	public static final EndpointEventEnum MEDIA_NOT_SUPPORTED = EndpointEventEnum.MEDIA_NOT_SUPPORTED;
+	/**
+	 * Call setup failure due to lack of media resources. No ports available
+	 */
+	public static final EndpointEventEnum MEDIA_RESOURCE_NOT_AVAILABLE = EndpointEventEnum.MEDIA_RESOURCE_NOT_AVAILABLE;
+	/**
+	 * Internal error within the local party prevents a normal negotiation flow
+	 */
+	public static final EndpointEventEnum SERVER_INTERNAL_ERROR = EndpointEventEnum.SERVER_INTERNAL_ERROR;
 
-	private EventType eventType;
+	private EndpointEventEnum eventType;
 
 	/**
 	 * This constructor allows to create an event whose source is a call managed
@@ -54,7 +57,7 @@ public class EndPointEvent extends EventObject {
 	 * @param source
 	 *            Call generating this event
 	 */
-	public EndPointEvent(EventType eventType, Call source) {
+	public EndPointEvent(EndpointEventEnum eventType, Call source) {
 		super(source);
 		this.eventType = eventType;
 	}
@@ -66,7 +69,7 @@ public class EndPointEvent extends EventObject {
 	 * @param eventType
 	 * @param source
 	 */
-	public EndPointEvent(EventType eventType, EndPoint source) {
+	public EndPointEvent(EndpointEventEnum eventType, EndPoint source) {
 		super(source);
 		this.eventType = eventType;
 	}
@@ -109,7 +112,7 @@ public class EndPointEvent extends EventObject {
 	 * 
 	 * @return Event type
 	 */
-	public EventType getEventType() {
+	public EndpointEventEnum getEventType() {
 		return eventType;
 	}
 

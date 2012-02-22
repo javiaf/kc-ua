@@ -88,8 +88,11 @@ public interface UA {
 	 *             if an internal error is found that prevents the registration
 	 *             process to complete
 	 */
+	@Deprecated
 	public EndPoint registerEndPoint(String user, String realm,
 			String password, int expires, EndPointListener handler)
 			throws ParseException, ServerInternalErrorException;
+
+	public void registerEndpoint(EndPoint endpoint);
 
 }
