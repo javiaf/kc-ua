@@ -45,18 +45,4 @@ public interface EndPoint {
 	public Call dial(String remoteParty, CallListener callController)
 			throws ServerInternalErrorException;
 
-	/**
-	 * Sends an OPTIONS message to a remote peer in order to find out if that
-	 * user is still available and to get its media capabilitites.
-	 * <p>
-	 * <b>This function is not avalable yet</b>
-	 * 
-	 * @param remoteParty 
-	 * @param callController
-	 * @throws ServerInternalErrorException
-	 */
-	@Deprecated
-	public void options(String remoteParty, CallListener callController)
-			throws ServerInternalErrorException;
-
 }
