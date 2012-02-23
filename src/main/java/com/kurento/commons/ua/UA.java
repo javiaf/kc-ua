@@ -33,4 +33,5 @@ public interface UA {
 
 	public void registerEndpoint(EndPoint endpoint);
 
+	public void unregisterEndpoint(EndPoint endpoint);
 }
