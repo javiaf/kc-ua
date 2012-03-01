@@ -132,4 +132,11 @@ public interface Call {
 	 */
 	public String getRemoteDisplayName();
 
+	/**
+	 * Returns the call identifier
+	 * 
+	 * @return The call identifier
+	 */
+	public String getId();
+
 }
