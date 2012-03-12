@@ -47,10 +47,6 @@ public class CallEvent extends EventObject {
 	 * Internal error within the local party prevents a normal negotiation flow
 	 */
 	public static final CallEventEnum SERVER_INTERNAL_ERROR = CallEventEnum.SERVER_INTERNAL_ERROR;
-	/**
-	 * Call requested
-	 */
-	public static final CallEventEnum CALL_REQUEST = CallEventEnum.CALL_REQUEST;
 	
 	private CallEventEnum eventType;
 
