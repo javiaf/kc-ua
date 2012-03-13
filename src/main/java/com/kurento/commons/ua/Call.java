@@ -2,8 +2,8 @@ package com.kurento.commons.ua;
 
 import java.util.Map;
 
+import com.kurento.commons.mscontrol.join.Joinable;
 import com.kurento.commons.mscontrol.join.JoinableStream;
-import com.kurento.commons.mscontrol.networkconnection.NetworkConnection;
 import com.kurento.commons.sdp.enums.MediaType;
 import com.kurento.commons.sdp.enums.Mode;
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
@@ -96,11 +96,11 @@ public interface Call {
 	 * successfully, the network connection can be used to access the streams
 	 * (audio and video) to connect to devices (camera, display...)
 	 * 
-	 * @return Media EndPoint when call setup is completed successfully,
+	 * @return Joinable when call setup is completed successfully,
 	 *         otherwise null
 	 * 
 	 */
-	public NetworkConnection getNetworkConnection(
+	public Joinable getNetworkConnection(
 			JoinableStream.StreamType media);
 
 	/**
