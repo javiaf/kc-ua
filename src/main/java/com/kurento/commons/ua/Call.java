@@ -9,14 +9,15 @@ import com.kurento.commons.sdp.enums.Mode;
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
- * The Call provides a management interface to a Dialog between the local
- * and remote User Agent with an interface designed to emulate the phone model
- * of use as much as possible.
+ * The Call provides a management interface to a Dialog between the local and
+ * remote User Agent with an interface designed to emulate the phone model of
+ * use as much as possible.
  * <p>
- * Call can be created by calling the {@link EndPoint#dial(String, CallListener) dial} method or as
- * a result of an INVITE message reception. First calls are called outgoing
- * (initiated by the local peer) while the seconds are called incoming
- * (initiated by the remote peer)
+ * Call can be created by calling the
+ * {@link EndPoint#dial(String, CallListener) dial} method or as a result of an
+ * INVITE message reception. First calls are called outgoing (initiated by the
+ * local peer) while the seconds are called incoming (initiated by the remote
+ * peer)
  * 
  * @author Kurento
  * 
@@ -26,10 +27,10 @@ public interface Call {
 	// Control interface
 	/**
 	 * This method provides the control mechanism to accept incoming calls
-	 * notified by {@link EndPoint}. A 200 OK message will be sent to
-	 * the remote peer. Before incoming calls are notified to the listener it
-	 * has been verified a common format exists for the communication, otherwise
-	 * the call is automatically rejected silently
+	 * notified by {@link EndPoint}. A 200 OK message will be sent to the remote
+	 * peer. Before incoming calls are notified to the listener it has been
+	 * verified a common format exists for the communication, otherwise the call
+	 * is automatically rejected silently
 	 * 
 	 * @throws ServerInternalErrorException
 	 *             If call is not incoming or Dialog is not in early state an
@@ -89,19 +90,18 @@ public interface Call {
 
 	// Media
 	/**
-	 * This method returns the NetworkConnection 
-	 * associated to this call. NetworkConnection is the
-	 * class that actually performs the media negotiation and provides control
-	 * interface to the media EndPoint. Once the call setup is completed
-	 * successfully, the network connection can be used to access the streams
-	 * (audio and video) to connect to devices (camera, display...)
+	 * This method returns the Joinable of the NetworkConnection associated to
+	 * this call. NetworkConnection is the class that actually performs the
+	 * media negotiation and provides control interface to the media EndPoint.
+	 * Once the call setup is completed successfully, the network connection can
+	 * be used to access the streams (audio and video) to connect to devices
+	 * (camera, display...)
 	 * 
-	 * @return Joinable when call setup is completed successfully,
-	 *         otherwise null
+	 * @return Joinable when call setup is completed successfully, otherwise
+	 *         null
 	 * 
 	 */
-	public Joinable getNetworkConnection(
-			JoinableStream.StreamType media);
+	public Joinable getJoinable(JoinableStream.StreamType media);
 
 	/**
 	 * Returns the connection mode for each media type. Available modes are
