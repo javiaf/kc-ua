@@ -10,11 +10,23 @@ public enum EndpointEventEnum {
 	 */
 	REGISTER_USER_SUCESSFUL,
 	/**
+	 * This event signals the UA successfully unregistered the URI
+	 */
+	UNREGISTER_USER_SUCESSFUL,
+	/**
 	 * This event signals the REGISTER rejected to register the URI with a 403
 	 * code
 	 */
 	REGISTER_USER_NOT_FOUND,
-
+	/**
+	 * This event signals the UNREGISTER rejected to register the URI with a 403
+	 * code
+	 */
+	UNREGISTER_USER_NOT_FOUND,
+	/**
+	 * This event signals a unregister failure with 4xx response
+	 */
+	UNREGISTER_USER_FAIL,
 	/**
 	 * This event signals a register failure with 4xx response
 	 */

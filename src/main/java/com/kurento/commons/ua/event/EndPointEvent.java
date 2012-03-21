@@ -25,14 +25,27 @@ public class EndPointEvent extends EventObject {
 	 */
 	public static final EndpointEventEnum REGISTER_USER_SUCESSFUL = EndpointEventEnum.REGISTER_USER_SUCESSFUL;
 	/**
+	 * This event signals the UA successfully unregistered the URI
+	 */
+	public static final EndpointEventEnum UNREGISTER_USER_SUCESSFUL = EndpointEventEnum.UNREGISTER_USER_SUCESSFUL;
+	/**
 	 * This event signals the REGISTER rejected to register the URI with a 403
 	 * code
 	 */
 	public static final EndpointEventEnum REGISTER_USER_NOT_FOUND = EndpointEventEnum.REGISTER_USER_NOT_FOUND;
 	/**
+	 * This event signals the REGISTER rejected to unregister the URI with a 403
+	 * code
+	 */
+	public static final EndpointEventEnum UNREGISTER_USER_NOT_FOUND = EndpointEventEnum.UNREGISTER_USER_NOT_FOUND;
+	/**
 	 * This event signals a register failure with 4xx response
 	 */
 	public static final EndpointEventEnum REGISTER_USER_FAIL = EndpointEventEnum.REGISTER_USER_FAIL;
+	/**
+	 * This event signals a unregister failure with 4xx response
+	 */
+	public static final EndpointEventEnum UNREGISTER_USER_FAIL = EndpointEventEnum.UNREGISTER_USER_FAIL;
 	/**
 	 * This event signals an internal UA error preventing the REGISTER operation
 	 * to complete sucessfully
