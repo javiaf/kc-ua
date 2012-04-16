@@ -2,10 +2,10 @@ package com.kurento.commons.ua;
 
 import java.util.Map;
 
+import com.kurento.commons.media.format.enums.MediaType;
+import com.kurento.commons.media.format.enums.Mode;
 import com.kurento.commons.mscontrol.join.Joinable;
 import com.kurento.commons.mscontrol.join.JoinableStream;
-import com.kurento.commons.sdp.enums.MediaType;
-import com.kurento.commons.sdp.enums.Mode;
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
