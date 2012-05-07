@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.kurento.commons</groupId>
 	<artifactId>kc-ua</artifactId>
-	<version>1.2.5-SNAPSHOT</version>
+	<version>1.2.6-SNAPSHOT</version>
 
 	<name>User Agent API</name>
 	<description>Generic User Agent interface library.</description>
@@ -13,7 +13,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Dependency versions -->
-		<kcMsControlVersion>2.0.0-SNAPSHOT</kcMsControlVersion>
+		<kcMsControlVersion>2.0.0</kcMsControlVersion>
 	</properties>
 
 	<organization>
@@ -72,6 +72,20 @@
 	</repositories>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.java</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.gwt.xml</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
