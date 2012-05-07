@@ -2,7 +2,7 @@ package com.kurento.commons.ua.timer;
 
 import java.util.Date;
 
-public interface Timer {
+public interface KurentoUaTimer {
 
 	/**
 	 * Cancels the Timer and all scheduled tasks.
@@ -22,7 +22,7 @@ public interface Timer {
 	 * @param when
 	 * @param period
 	 */
-	public void schedule(TimerTask task, Date when, long period);
+	public void schedule(KurentoUaTimerTask task, Date when, long period);
 
 	/**
 	 * Schedule a task for repeated fixed-delay execution after a specific
@@ -32,14 +32,14 @@ public interface Timer {
 	 * @param delay
 	 * @param period
 	 */
-	public void schedule(TimerTask task, long delay, long period);
+	public void schedule(KurentoUaTimerTask task, long delay, long period);
 
 	/**
 	 * Schedule a task for single execution.
 	 * @param task
 	 * @param when
 	 */
-	public void schedule(TimerTask task, Date when);
+	public void schedule(KurentoUaTimerTask task, Date when);
 
 	/**
 	 * Schedule a task for single execution after a specified delay.
@@ -47,7 +47,7 @@ public interface Timer {
 	 * @param task
 	 * @param delay
 	 */
-	void schedule(TimerTask task, long delay);
+	void schedule(KurentoUaTimerTask task, long delay);
 
 	/**
 	 * Schedule a task for repeated fixed-rate execution after a specific delay
@@ -57,7 +57,7 @@ public interface Timer {
 	 * @param delay
 	 * @param period
 	 */
-	void scheduleAtFixedRate(TimerTask task, long delay, long period);
+	void scheduleAtFixedRate(KurentoUaTimerTask task, long delay, long period);
 
 	/**
 	 * Schedule a task for repeated fixed-rate execution after a specific time
@@ -67,5 +67,5 @@ public interface Timer {
 	 * @param when
 	 * @param period
 	 */
-	void scheduleAtFixedRate(TimerTask task, Date when, long period);
+	void scheduleAtFixedRate(KurentoUaTimerTask task, Date when, long period);
 }

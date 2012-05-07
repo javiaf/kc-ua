@@ -1,6 +1,6 @@
 package com.kurento.commons.ua.timer;
 
-public abstract class TimerTask {
+public abstract class KurentoUaTimerTask {
 	
 	public abstract boolean cancel();
 	
