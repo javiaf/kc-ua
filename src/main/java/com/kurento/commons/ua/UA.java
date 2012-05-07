@@ -30,6 +30,13 @@ public interface UA {
 	 * </ul>
 	 */
 	public void terminate();
+	
+	/**
+	 * Reconfigure UA. Provide a mechanism to notify the UA implementation
+	 * that a reconfiguration is required due to environment change.
+	 * Each implementation will perform different actions
+	 */
+	public void reconfigure();
 
 	public void registerEndpoint(EndPoint endpoint);
 
