@@ -5,9 +5,9 @@ import java.util.Date;
 public interface KurentoUaTimer {
 
 	/**
-	 * Cancels the Timer and all scheduled tasks.
+	 * Cancels a scheduled KurentoUaTimerTask.
 	 */
-	public void cancel();
+	public void cancel(KurentoUaTimerTask task);
 
 	/**
 	 * Removes all canceled tasks from the task queue.
@@ -68,4 +68,5 @@ public interface KurentoUaTimer {
 	 * @param period
 	 */
 	void scheduleAtFixedRate(KurentoUaTimerTask task, Date when, long period);
+
 }
