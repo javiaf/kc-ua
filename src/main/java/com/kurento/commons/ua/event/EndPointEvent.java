@@ -117,7 +117,10 @@ public class EndPointEvent extends EventObject {
 	 * @return EndPoint generating the event
 	 */
 	public EndPoint getEndPointSource() {
-		return (EndPoint) source;
+		if (source instanceof EndPoint)
+			return (EndPoint) source;
+		else
+			return null;
 	}
 
 	/**
