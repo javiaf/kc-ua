@@ -38,4 +38,8 @@ public enum CallEventEnum {
 	 * Call requested
 	 */
 	CALL_REQUEST,
+	/**
+	 * Call setup failure due to user not found
+	 */
+	USER_NOT_FOUND
 }

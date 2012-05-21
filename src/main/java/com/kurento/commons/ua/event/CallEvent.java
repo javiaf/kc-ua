@@ -47,6 +47,10 @@ public class CallEvent extends EventObject {
 	 * Internal error within the local party prevents a normal negotiation flow
 	 */
 	public static final CallEventEnum SERVER_INTERNAL_ERROR = CallEventEnum.SERVER_INTERNAL_ERROR;
+	/**
+	 * Call setup failure due to user not found
+	 */
+	public static final CallEventEnum USER_NOT_FOUND = CallEventEnum.USER_NOT_FOUND;
 	
 	private CallEventEnum eventType;
 
