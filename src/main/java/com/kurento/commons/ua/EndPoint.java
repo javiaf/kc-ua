@@ -45,4 +45,19 @@ public interface EndPoint {
 	public Call dial(String remoteParty, CallListener callController)
 			throws ServerInternalErrorException;
 
+	/**
+	 * Adds a new listener to be notified about the endpoint events
+	 * 
+	 * @param listener
+	 *            The listener
+	 */
+	public void addListener(EndPointListener listener);
+
+	/**
+	 * Removes a listener that does not want to receive more events
+	 * 
+	 * @param listener
+	 *            The listener
+	 */
+	public void removeListener(EndPointListener listener);
 }
