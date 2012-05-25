@@ -1,5 +1,8 @@
 package com.kurento.commons.ua;
 
+import java.util.Map;
+
+import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
  * The User Agent (UA) is the common interface provided by communications
@@ -38,7 +41,9 @@ public interface UA {
 	 */
 	public void reconfigure();
 
-	public void registerEndpoint(EndPoint endpoint);
+	public EndPoint registerEndpoint(String user, String domain,
+			EndPointListener listener, Map<String, Object> extra)
+			throws ServerInternalErrorException;
 
 	public void unregisterEndpoint(EndPoint endpoint);
 }
