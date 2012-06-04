@@ -7,6 +7,10 @@ public enum CallEventEnum {
 	 */
 	CALL_SETUP,
 	/**
+	 * Call rejected due to remote party busy
+	 */
+	CALL_BUSY,
+	/**
 	 * Call rejected by the called party
 	 */
 	CALL_REJECT,

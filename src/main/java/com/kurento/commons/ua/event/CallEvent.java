@@ -20,6 +20,10 @@ public class CallEvent extends EventObject {
 	 */
 	public static final CallEventEnum CALL_SETUP = CallEventEnum.CALL_SETUP;
 	/**
+	 * Call rejected because remote peer is busy
+	 */
+	public static final CallEventEnum CALL_BUSY = CallEventEnum.CALL_BUSY;
+	/**
 	 * Call rejected by the called party
 	 */
 	public static final CallEventEnum CALL_REJECT = CallEventEnum.CALL_REJECT;
