@@ -46,6 +46,7 @@ public interface Call {
 	 *             If call is not incoming or Dialog is not in early state an
 	 *             Exception will be generated
 	 */
+	@Deprecated
 	public void reject() throws ServerInternalErrorException;
 
 	/**
@@ -65,6 +66,7 @@ public interface Call {
 	 *             if the call has not been initiated by local peer or Dialog is
 	 *             not in a early stage
 	 */
+	@Deprecated
 	public void cancel() throws ServerInternalErrorException;
 
 	// monitor interface
