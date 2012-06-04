@@ -38,6 +38,11 @@ public enum CallEventEnum {
 	 * Call requested
 	 */
 	CALL_REQUEST,
+	
+	/**
+	 * Call ringing on remote peer
+	 */
+	CALL_RINGING,
 	/**
 	 * Call setup failure due to user not found
 	 */

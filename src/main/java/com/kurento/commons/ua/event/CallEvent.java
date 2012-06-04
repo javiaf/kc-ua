@@ -36,6 +36,10 @@ public class CallEvent extends EventObject {
 	 */
 	public static final CallEventEnum CALL_ERROR = CallEventEnum.CALL_ERROR;
 	/**
+	 * Incoming call signaled to remote peer
+	 */
+	public static final CallEventEnum CALL_RINGING = CallEventEnum.CALL_RINGING;
+	/**
 	 * Call setup failure due to incompatible media formats
 	 */
 	public static final CallEventEnum MEDIA_NOT_SUPPORTED = CallEventEnum.MEDIA_NOT_SUPPORTED;
@@ -53,12 +57,18 @@ public class CallEvent extends EventObject {
 	public static final CallEventEnum USER_NOT_FOUND = CallEventEnum.USER_NOT_FOUND;
 	
 	private CallEventEnum eventType;
+	private String msg;
 
 	public CallEvent(CallEventEnum eventType, Call source) {
-		super(source);
-		this.eventType = eventType;
+		this(eventType,"", source);
 	}
 
+	public CallEvent(CallEventEnum eventType, String msg, Call source) {
+		super(source);
+		this.eventType = eventType;
+		this.msg=msg;
+	}
+	
 	/**
 	 * Set event source. The Call originating the event
 	 * @param source
@@ -75,19 +85,19 @@ public class CallEvent extends EventObject {
 	}
 
 	/**
-	 * Set the event that has to be notified
-	 * @param eventType
-	 */
-	public void setEventType(CallEventEnum eventType) {
-		this.eventType = eventType;
-	}
-
-	/**
 	 * Returns the event type
 	 * @return Event type
 	 */
 	public CallEventEnum getEventType() {
 		return eventType;
+	}
+	
+	/**
+	 * Return any message provided by the event generator
+	 * @return String message
+	 */
+	public String getMessage() {
+		return msg;
 	}
 
 	public String toString() {
