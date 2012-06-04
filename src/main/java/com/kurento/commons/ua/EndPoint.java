@@ -46,6 +46,13 @@ public interface EndPoint {
 			throws ServerInternalErrorException;
 
 	/**
+	 * Gets the local URI of this endpoint
+	 * 
+	 * @return The endpoint local URI
+	 */
+	public String getUri();
+
+	/**
 	 * Adds a new listener to be notified about the endpoint events
 	 * 
 	 * @param listener
