@@ -39,35 +39,25 @@ public interface Call {
 	public void accept() throws ServerInternalErrorException;
 
 	/**
-	 * This method provides the control mechanism to reject incoming calls
-	 * notified by {@link EndPoint}
-	 * 
-	 * @throws ServerInternalErrorException
-	 *             If call is not incoming or Dialog is not in early state an
-	 *             Exception will be generated
-	 */
-	@Deprecated
-	public void reject() throws ServerInternalErrorException;
-
-	/**
 	 * Provides the control mechanism to terminate this call
 	 * 
 	 * @throws ServerInternalErrorException
 	 *             If the call is not active
 	 * 
 	 */
-	public void hangup() throws ServerInternalErrorException;
+	public void terminate() throws ServerInternalErrorException;
 
 	/**
-	 * Provides the control mechanism to cancel an outgoing call initiated by a
-	 * local {@link EndPoint}
+	 * Provides the control mechanism to terminate this call
 	 * 
+	 * @param code
+	 *            Code with the reason of call termination. Only used when a
+	 *            incoming call is rejected
 	 * @throws ServerInternalErrorException
-	 *             if the call has not been initiated by local peer or Dialog is
-	 *             not in a early stage
+	 *             If the call is not active
 	 */
-	@Deprecated
-	public void cancel() throws ServerInternalErrorException;
+	public void terminate(TerminateReason code)
+			throws ServerInternalErrorException;
 
 	// monitor interface
 	/**
