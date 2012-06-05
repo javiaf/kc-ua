@@ -46,6 +46,31 @@ public interface EndPoint {
 			throws ServerInternalErrorException;
 
 	/**
+	 * Creates a new outgoing call and initiates the negotiation with the called
+	 * party specified. In order to start the procedure it must be provided a
+	 * CallListener that will receive call events
+	 * <p>
+	 * Method returns control immediately after it is called. Negotiation and
+	 * setup is carried out asynchronously and progress is notified through
+	 * events to the controller
+	 * 
+	 * @param remoteParty
+	 *            Called party
+	 * @param attributes
+	 *            Extra attributes to be added to the call
+	 * @param callController
+	 *            Listener of Call events
+	 * 
+	 * @return the call object
+	 * @throws ServerInternalErrorException
+	 *             If an error occurts preventing the local UA to initiate the
+	 *             procedure
+	 */
+	public Call dial(String remoteParty, CallAttributes attributes,
+			CallListener callController)
+			throws ServerInternalErrorException;
+
+	/**
 	 * Gets the local URI of this endpoint
 	 * 
 	 * @return The endpoint local URI

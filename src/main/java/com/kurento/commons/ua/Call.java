@@ -131,4 +131,10 @@ public interface Call {
 	 */
 	public String getId();
 
+	/**
+	 * Get extra attributes set in this call
+	 * 
+	 * @return The attributes class
+	 */
+	public CallAttributes getAttributes();
 }
