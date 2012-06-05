@@ -36,14 +36,6 @@ public interface UA {
 	public void terminate();
 
 	/**
-	 * Reconfigure UA. Provide a mechanism to notify the UA implementation that
-	 * a reconfiguration is required due to environment change. Each
-	 * implementation will perform different actions
-	 * @throws ServerInternalErrorException 
-	 */
-	public void reconfigure() throws ServerInternalErrorException;
-
-	/**
 	 * Allows the application to register a service Endpoint connected to the UA
 	 * communication domain.
 	 * 
@@ -67,5 +59,5 @@ public interface UA {
 			EndPointListener listener, Map<String, Object> extra)
 			throws ServerInternalErrorException;
 
-	public void unregisterEndpoint(EndPoint endpoint);
+	public void unregisterEndpoint(EndPoint endpoint) throws ServerInternalErrorException;
 }
