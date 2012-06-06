@@ -22,7 +22,7 @@ public class CallAttributes {
 	}
 
 	public CallAttributes(Map<String, String> attributes) {
-		if (attributes == null)
+		if (attributes != null)
 			this.attributes.putAll(attributes);
 	}
 
