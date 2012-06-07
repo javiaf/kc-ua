@@ -4,8 +4,7 @@ import java.util.Map;
 
 import com.kurento.commons.media.format.enums.MediaType;
 import com.kurento.commons.media.format.enums.Mode;
-import com.kurento.commons.mscontrol.join.Joinable;
-import com.kurento.commons.mscontrol.join.JoinableStream;
+import com.kurento.commons.mscontrol.networkconnection.NetworkConnection;
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
@@ -82,18 +81,17 @@ public interface Call {
 
 	// Media
 	/**
-	 * This method returns the Joinable of the NetworkConnection associated to
-	 * this call. NetworkConnection is the class that actually performs the
-	 * media negotiation and provides control interface to the media EndPoint.
-	 * Once the call setup is completed successfully, the network connection can
-	 * be used to access the streams (audio and video) to connect to devices
+	 * This method returns the NetworkConnection associated to this call.
+	 * NetworkConnection is the class that actually performs the media
+	 * negotiation and provides control interface to the media EndPoint. Once
+	 * the call setup is completed successfully, the network connection can be
+	 * used to access the streams (audio and video) to connect to devices
 	 * (camera, display...)
 	 * 
-	 * @return Joinable when call setup is completed successfully, otherwise
-	 *         null
+	 * @return NetworkConnection associated with the call
 	 * 
 	 */
-	public Joinable getJoinable(JoinableStream.StreamType media);
+	public NetworkConnection getNetworkConnection();
 
 	/**
 	 * Returns the connection mode for each media type. Available modes are
