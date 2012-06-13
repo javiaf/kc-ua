@@ -3,6 +3,7 @@ package com.kurento.commons.ua.event;
 import java.util.EventObject;
 
 import com.kurento.commons.ua.Call;
+import com.kurento.commons.ua.Conference;
 import com.kurento.commons.ua.EndPoint;
 
 /**
@@ -76,6 +77,19 @@ public class EndPointEvent extends EventObject {
 	}
 
 	/**
+	 * This constructor allows to create an event whose source is a conference
+	 * managed by the EndPoint
+	 * 
+	 * @param eventType
+	 * @param source
+	 *            Call generating this event
+	 */
+	public EndPointEvent(EndpointEventEnum eventType, Conference source) {
+		super(source);
+		this.eventType = eventType;
+	}
+
+	/**
 	 * This constructor allows to create an event whose source is the EndPoint
 	 * itself
 	 * 
@@ -100,6 +114,23 @@ public class EndPointEvent extends EventObject {
 	public Call getCallSource() {
 		if (source instanceof Call)
 			return (Call) source;
+		else
+			return null;
+	}
+
+	/**
+	 * Get Conference source. This function can be called with events:
+	 * <ul>
+	 * <li>INCOMING_CALL
+	 * </ul>
+	 * When source is not a Call this method returns null
+	 * 
+	 * @return Call generating the event
+	 */
+
+	public Conference getConferenceSource() {
+		if (source instanceof Conference)
+			return (Conference) source;
 		else
 			return null;
 	}
