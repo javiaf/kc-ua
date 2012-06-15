@@ -9,23 +9,37 @@ Kurento User Agent
 
 * Introduction
 
-	KC-UA provides a generic User Agent interface that provides a high level API to services,
-	allowing developers to easily write communication applications.
+	KC-UA provides developers a protocol independent and generic User Agent interface 
+	for call management
+	
+	Every multimedia communication requires two components: Control Plane and User Plane
+	
+		* Control Plane: Takes care of channel negotiation is able to handle a media description protocol
+		used to negotiate media channel between two remote peers
+		
+		* User Plane: It is the actual media channel parameterized by negotiation carried out
+		by Control plane
+		
+	User Agents are specific Control plane implementations for a given protocol. KC-UA provides 
+	developers a protocol independent and generic User Agent interface 
+	for call management
 
 * Components
 
 	* <<<UA>>> : User Agent interface. This component manages protocol internals.
 	
-	* <<<EndPoint>>>: Logical entity associated to a URI. Any call
+	* <<<EndPoint>>>: Logical entity providing a point of service. Each Endpoint has an associated URI, that uniquely 
+	identifies the Endpoint within  a given address domain. Any call
 	addressed to that URI will be multiplexed by the <<<UA>>>. It also provides an interface for
 	URI management and call generation (dial from this URI).
 	
-	* <<<Call>>>: This object wraps the dialog and provides a telephone like control interface. Actions
+	* <<<Call>>>: This object wraps the communication session and provides a telephone like control interface. Actions
 	resembles phone model of use: accept call, reject call, terminate call, etc.
 
 * Capabilities
 	
-	 * <<Registration>>: Kurento User Agent allows registration of a contact.
+	 * <<Registration>>: Kurento User Agent allows registration of a contact. Registration is the procedure associating
+	 the Endpoint URI to the transport address where messages will be sent.
 	 
 	 * <<Dial>>: Kurento <<<EndPoint>>> can initiate outgoing calls. <<<Call>>> object is used to
 	 manage call life cycle.
@@ -34,13 +48,39 @@ Kurento User Agent
 	 
 	 * <<CallManagement>>:
 	 
-	 	* <Cancel>: Cancel an outgoing call.
+	 	* <Terminate>: Request for completion of a given call: incoming, outgoing, pending or confirmed.
+	 	Request termination of incoming calls is regarded as call reject. Request termination of outgoing call
+	 	are named as cancel call
 	 	
 	 	* <Accept>: Accept an incoming call.
-	 	
-	 	* <Reject>: Reject an incoming call.
-	 	
-	 	* <Hang up>: Hang up an call.
+	
+* UA life-cycle
+
+	Media factory inicitalization
+	
+		Every Multimedia communication requires media transfer capabilitites
+		accomplished by a media stack. Underlying media transfer mechanisms
+		are implementation specific, 
+	
+	User Agent factory initialization
+		Add media factory
+		Other configurations
+		
+	Build User Agent instance
+		Initialize communication stack and connection to the address domain
+		
+	Endpoint register
+	
+	Call handling
+		Incoming call
+		
+		Outgoing call
+	
+	Media management
+	
+		Resource allocation and negotiation
+		
+		Resource Release
 	 	
 * Event model
 
