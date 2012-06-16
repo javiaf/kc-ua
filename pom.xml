@@ -14,7 +14,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Dependency versions -->
-		<kcMsControlVersion>2.0.1-SNAPSHOT</kcMsControlVersion>
+		<kcMsControlVersion>2.0.1</kcMsControlVersion>
 	</properties>
 
 	<organization>
