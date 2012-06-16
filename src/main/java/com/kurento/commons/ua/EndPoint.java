@@ -92,4 +92,12 @@ public interface EndPoint {
 	 *            The listener
 	 */
 	public void removeListener(EndPointListener listener);
+
+	/**
+	 * Returns the conference manager that allows conference creation
+	 * 
+	 * @return The conference manager or null if this EndPoint does not support
+	 *         conferences
+	 */
+	public ConferenceManager getConferenceManager();
 }
