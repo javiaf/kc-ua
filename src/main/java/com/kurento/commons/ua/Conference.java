@@ -20,6 +20,8 @@ public interface Conference extends Call {
 
 	public void getConnectionUri(String connection, Continuation<String> cont);
 
+	public void getConnectionMain(String connection, Continuation<Boolean> cont);
+
 	/**
 	 * Add a new listener object that will receive conference events
 	 */
