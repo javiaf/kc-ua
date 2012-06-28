@@ -1,5 +1,7 @@
 package com.kurento.commons.ua;
 
+import java.util.Collection;
+
 public interface Conference extends Call {
 
 	public void terminateConference();
@@ -11,6 +13,10 @@ public interface Conference extends Call {
 	public void setMain(String connectionId);
 
 	public void setMute(String connectionId, Boolean mute);
+
+	public String getMyConnectionId();
+
+	public void getConnections(Continuation<Collection<String>> cont);
 
 	/**
 	 * Add a new listener object that will receive conference events
