@@ -10,7 +10,7 @@ public interface Conference extends Call {
 
 	public void invite(String remoteParty, CallAttributes attributes);
 
-	public void setMain(String connectionId);
+	public void setMain(String connectionId, Boolean main);
 
 	public void setMute(String connectionId, Boolean mute);
 
