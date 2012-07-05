@@ -6,9 +6,10 @@ public interface Conference extends Call {
 
 	public void terminateConference();
 
-	public void invite(String remoteParty);
+	public void invite(String remoteParty, Continuation<Void, InviteStateEnum> cont);
 
-	public void invite(String remoteParty, CallAttributes attributes);
+	public void invite(String remoteParty, CallAttributes attributes,
+			Continuation<Void, InviteStateEnum> cont);
 
 	public void setMain(String connectionId, Boolean main);
 
@@ -16,11 +17,13 @@ public interface Conference extends Call {
 
 	public String getMyConnectionId();
 
-	public void getConnections(Continuation<Collection<String>> cont);
+	public void getConnections(Continuation<Collection<String>, Void> cont);
 
-	public void getConnectionUri(String connection, Continuation<String> cont);
+	public void getConnectionUri(String connection,
+			Continuation<String, Void> cont);
 
-	public void getConnectionMain(String connection, Continuation<Boolean> cont);
+	public void getConnectionMain(String connection,
+			Continuation<Boolean, Void> cont);
 
 	/**
 	 * Add a new listener object that will receive conference events
