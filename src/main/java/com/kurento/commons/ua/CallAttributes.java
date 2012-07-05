@@ -11,10 +11,6 @@ public class CallAttributes {
 	private static final String KEY_VAL_SEP = "|";
 	private static final String ATTRIBUTE_SEP = ";";
 
-	public static final String CONNECTION_ID = "ConnectionId";
-	public static final String CONFERENCE_ID = "ConferenceId";
-	public static final String GROUP_ID = "GroupId";
-
 	private Map<String, String> attributes = new HashMap<String, String>();
 
 	public CallAttributes() {
