@@ -1,4 +1,4 @@
-package com.kurento.commons.ua;
+package com.kurento.ua.commons;
 
 import java.util.Collection;
 

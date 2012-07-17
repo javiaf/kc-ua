@@ -1,4 +1,4 @@
-package com.kurento.commons.ua.event;
+package com.kurento.ua.commons;
 
 public enum EndpointEventEnum {
 	/**

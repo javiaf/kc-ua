@@ -1,4 +1,4 @@
-package com.kurento.commons.ua;
+package com.kurento.ua.commons;
 
 public interface Continuation<T, U> {
 	public void onSuccess(T result);

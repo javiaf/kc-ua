@@ -1,6 +1,5 @@
-package com.kurento.commons.ua;
+package com.kurento.ua.commons;
 
-import com.kurento.commons.ua.event.CallEvent;
 
 /**
  * This interface must be implemented by applications willing to receive

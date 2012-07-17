@@ -1,4 +1,4 @@
-package com.kurento.commons.ua.timer;
+package com.kurento.ua.commons;
 
 import java.util.Date;
 

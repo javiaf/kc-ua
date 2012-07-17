@@ -1,8 +1,7 @@
-package com.kurento.commons.ua;
+package com.kurento.ua.commons;
 
 import java.util.Map;
 
-import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
  * The User Agent (UA) is the common interface provided by communications

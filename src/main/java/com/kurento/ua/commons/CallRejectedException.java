@@ -1,4 +1,4 @@
-package com.kurento.commons.ua.exception;
+package com.kurento.ua.commons;
 
 public class CallRejectedException extends Exception {
 

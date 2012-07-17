@@ -1,6 +1,5 @@
-package com.kurento.commons.ua;
+package com.kurento.ua.commons;
 
-import com.kurento.commons.ua.exception.ServerInternalErrorException;
 
 /**
  * This class represents the service EndPoint. It is associated to a URI, so
