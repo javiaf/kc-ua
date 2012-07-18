@@ -2,8 +2,6 @@ package com.kurento.ua.commons.junit;
 
 import junit.framework.Assert;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,16 +39,6 @@ public class DialTest {
 
 	public static void setServerEndPoint(EndPoint serverEndPoint) {
 		DialTest.serverEndPoint = serverEndPoint;
-	}
-
-	@BeforeClass
-	public static void setup() throws Exception {
-		log.debug("setup");
-	}
-
-	@AfterClass
-	public static void tearDown() {
-		log.debug("tearDown");
 	}
 
 	/**
