@@ -54,6 +54,7 @@ public interface UA {
 	 * @return
 	 * @throws ServerInternalErrorException
 	 */
+	// TODO: use Parameters from kc-config instead a Map for extra
 	public EndPoint registerEndpoint(String user, String domain,
 			EndPointListener listener, Map<String, Object> extra)
 			throws ServerInternalErrorException;
