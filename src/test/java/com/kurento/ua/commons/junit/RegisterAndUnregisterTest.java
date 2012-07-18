@@ -32,10 +32,27 @@ public class RegisterAndUnregisterTest extends RegisterTest {
 		serverUA.terminate();
 	}
 
+	/**
+	 * Verify the UA is able to register a EndPoint for a given URI and it
+	 * manages its register/non-register status.
+	 * 
+	 * <pre>
+	 *  1 - clientUA.registerEndpoint() >>> C:--- REGISTER REQUEST --->:S
+	 *          REGISTER_USER_SUCESSFUL <<< C:<------ REGISTER OK -----:S
+	 *  2 - clientEndPoint.terminate() >>> C:--- UNREGISTER REQUEST --->:S
+	 *       UNREGISTER_USER_SUCESSFUL <<< C:<------ UNREGISTER OK -----:S
+	 *  3 - clientEndPoint.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
+	 *  4 - clientUA.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
+	 * </pre>
+	 * 
+	 * @throws Exception
+	 */
 	@Test
 	public void testRegisterAndUnregister() throws Exception {
 		log.debug("-------------------- testRegisterAndUnregister --------------------");
 
+		// 1 - clientUA.registerEndpoint() >>> C:--- REGISTER REQUEST --->:S
+		// REGISTER_USER_SUCESSFUL <<< C:<------ REGISTER OK -----:S
 		log.info("Register user " + clientName + "...");
 		EndPointListenerImpl clientEndPointListener = new EndPointListenerImpl(
 				clientName);
@@ -50,6 +67,8 @@ public class RegisterAndUnregisterTest extends RegisterTest {
 				endPointEvent.getEventType());
 		log.info("OK");
 
+		// 2 - clientEndPoint.terminate() >>> C:--- UNREGISTER REQUEST --->:S
+		// UNREGISTER_USER_SUCESSFUL <<< C:<------ UNREGISTER OK -----:S
 		log.info("Implicit un-register of user " + clientName + "...");
 		clientEndPoint.terminate();
 		endPointEvent = clientEndPointListener.poll(WAIT_TIME);
@@ -60,6 +79,8 @@ public class RegisterAndUnregisterTest extends RegisterTest {
 				endPointEvent.getEventType());
 		log.info("OK");
 
+		// 3 - clientEndPoint.terminate() >>> C: Verify no REGISTER REQUEST is
+		// sent (EP is already unregistered)
 		// Wait a moment
 		Thread.sleep(500);
 		log.info("Terminate user " + clientName
@@ -68,6 +89,8 @@ public class RegisterAndUnregisterTest extends RegisterTest {
 		endPointEvent = clientEndPointListener.poll(WAIT_TIME);
 		Assert.assertNull("Client UA sent unregister twice", endPointEvent);
 
+		// 4 - clientUA.terminate() >>> C: Verify no REGISTER REQUEST is sent
+		// (EP is already unregistered)
 		// Check no register is sent when UA terminates
 		clientUA.terminate();
 		endPointEvent = clientEndPointListener.poll(WAIT_TIME);
