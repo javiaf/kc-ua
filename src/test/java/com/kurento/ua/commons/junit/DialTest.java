@@ -46,19 +46,19 @@ public class DialTest {
 	 * manages its register/non-register status.
 	 * 
 	 * <pre>
-	 *  1 - clientEndPoint.dial() >>> C:------- DIAL REQUEST ------->:S >>> INCOMING_CALL
-	 *               CALL_RINGING <<< C:<--- DIAL REQUEST ARRIVED ---:S
-	 *  2 - CALL_SETUP <<< C:<------- ACCEPT CALL -------:S serverCall.accept()
-	 *                     C:--- ACCEPT CALL ARRIVED --->:S >>> CALL_SETUP
-	 *  3 - clientCall.terminate() >>> C:--- TERMINATE CALL REQUEST --->:S CALL_TERMINATE
-	 *       CALL_TERMINATE <<< C:<------ TERMINATE CALL OK -----:S
+	 *  1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+	 *                CALL_RINGING <<< C:<----- DIAL REQUEST ARRIVED ---:S
+	 *  2 -             CALL_SETUP <<< C:<-------------- ACCEPT CALL ---:S <<< serverCall.accept()
+	 *                                 C:--- ACCEPT CALL ARRIVED ------>:S >>> CALL_SETUP
+	 *  3 - clientCall.terminate() >>> C:--- TERMINATE CALL REQUEST --->:S >>> CALL_TERMINATE
+	 *              CALL_TERMINATE <<< C:<-------- TERMINATE CALL OK ---:S
 	 * </pre>
 	 * 
 	 * @throws Exception
 	 */
 	@Test
-	public void testDial() throws Exception {
-		log.debug("-------------------- testDial --------------------");
+	public void testCallSetupAndDropFromCaller() throws Exception {
+		log.debug("-------------------- testCallSetupAndDropFromCaller --------------------");
 
 		EndPointEvent endPointEvent;
 		CallEvent callEvent;
@@ -95,7 +95,7 @@ public class DialTest {
 		log.info("OK");
 
 		// 2 - CALL_SETUP <<< C:<------- ACCEPT CALL -------:S
-		// serverCall.accept()
+		// <<< serverCall.accept()
 		// C:--- ACCEPT CALL ARRIVED --->:S >>> CALL_SETUP
 		log.info(serverName + " accepts call...");
 		CallListenerImpl serverCallListener = new CallListenerImpl(serverName);
@@ -123,7 +123,7 @@ public class DialTest {
 		log.info("OK");
 
 		// 3 - clientCall.terminate() >>> C:--- TERMINATE CALL REQUEST --->:S
-		// CALL_TERMINATE
+		// >>> CALL_TERMINATE
 		// CALL_TERMINATE <<< C:<------ TERMINATE CALL OK -----:S
 		log.info(clientName + " hangup...");
 		clientCall.terminate();
@@ -147,7 +147,8 @@ public class DialTest {
 				callEvent.getEventType());
 		log.info("OK");
 
-		log.info(" -------------------- testDial finished OK --------------------");
+		log.info(" -------------------- testCallSetupAndDropFromCaller finished OK --------------------");
+	}
 	}
 
 }
