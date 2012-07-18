@@ -87,6 +87,104 @@ User Agent Test Plan
 
 
 
+* Call setup and drop from caller
+
+	EndPoint must be able to set up an tear down a call with a remote peer.
+
+	[<<Test Procedure>>]
+
+		[<Step 1>] Client EndPoint dials to the server EndPoint.
+
+		[<Step 2>] Server EndPoint accepts call received from client EndPoint.
+
+		[<Step 3>] Client EndPoint hangs up the call.
+
+	    <<Automated by>> <<<com.kurento.ua.commons.junit.DialTest#testCallSetupAndDropFromCaller>>>      
+
+	[]
+	
++-----------------
+ 1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+               CALL_RINGING <<< C:<----- DIAL REQUEST ARRIVED ---:S
+ 2 -             CALL_SETUP <<< C:<-------------- ACCEPT CALL ---:S <<< serverCall.accept()
+                                C:--- ACCEPT CALL ARRIVED ------>:S >>> CALL_SETUP
+ 3 - clientCall.terminate() >>> C:--- TERMINATE CALL REQUEST --->:S >>> CALL_TERMINATE
+             CALL_TERMINATE <<< C:<-------- TERMINATE CALL OK ---:S
++-----------------
+
+ 	[<<Pass Criteria>>]
+
+		[[1]] Verify in <Step 1>:
+		
+			[[a]] Server EndPoint receive a INCOMING_CALL event.
+			
+			[[b]] Client EndPoint receive a CALL_RINGING event.
+
+		[[2]] Verify in <Step 2>:
+		
+			[[a]] Client EndPoint receive a CALL_SETUP event.
+			
+			[[b]] Server EndPoint receive a CALL_SETUP event.
+
+		[[3]] Verify in <Step 3>:
+		
+			[[a]] Server EndPoint receive a CALL_TERMINATE event.
+			
+			[[b]] Client EndPoint receive a CALL_TERMINATE event.
+
+
+
+
+
+* Call setup and drop from callee
+
+	EndPoint must be able to set up an tear down a call with a remote peer.
+
+	[<<Test Procedure>>]
+
+		[<Step 1>] Client EndPoint dials to the server EndPoint.
+
+		[<Step 2>] Server EndPoint accepts call received from client EndPoint.
+
+		[<Step 3>] Server EndPoint hangs up the call.
+
+	    <<Automated by>> <<<com.kurento.ua.commons.junit.DialTest#testCallSetupAndDropFromCallee>>>      
+
+	[]
+	
++-----------------
+ 1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+               CALL_RINGING <<< C:<----- DIAL REQUEST ARRIVED ---:S
+ 2 -             CALL_SETUP <<< C:<-------------- ACCEPT CALL ---:S <<< serverCall.accept()
+                                C:--- ACCEPT CALL ARRIVED ------>:S >>> CALL_SETUP
+ 3 -         CALL_TERMINATE <<< C:<--- TERMINATE CALL REQUEST ---:S <<< serverCall.terminate()
+                                C:--- TERMINATE CALL OK--------->:S >>> CALL_TERMINATE
++-----------------
+
+ 	[<<Pass Criteria>>]
+
+		[[1]] Verify in <Step 1>:
+		
+			[[a]] Server EndPoint receive a INCOMING_CALL event.
+			
+			[[b]] Client EndPoint receive a CALL_RINGING event.
+
+		[[2]] Verify in <Step 2>:
+		
+			[[a]] Client EndPoint receive a CALL_SETUP event.
+			
+			[[b]] Server EndPoint receive a CALL_SETUP event.
+
+		[[3]] Verify in <Step 3>:
+		
+			[[a]] Client EndPoint receive a CALL_TERMINATE event.
+			
+			[[b]] Server EndPoint receive a CALL_TERMINATE event.
+
+
+
+
+
 
 
 
