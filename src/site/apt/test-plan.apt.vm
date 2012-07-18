@@ -1,0 +1,95 @@
+   ------
+   Kurento Android SIP User Agent Test Plan
+   ------
+   ------
+   Date
+   ------
+
+User Agent Test Plan
+
+  	[<<Conventions>>]
+	
+		[<Automation>] Each test indicates if an automated procedure is in place.
+		               Automated tests are JUnit based.
+		  
+		[<Pass criteria>] Pass criteria will provide a set of conditions to be 
+	                      verified in order to declare the test passed. False 
+	                      conditions will cause the test to be set as NOT PASSED.
+
+* Register and Unregister
+
+	User Agent (UA) must provide EndPoint registration.
+	When the EndPoint (URI manager) is terminated, the contact
+	must be automatically removed.
+	
+ 	[<<Test Procedure>>]
+
+		[<Step 1>] Request the UA to register a contact for a given URI.
+
+		[<Step 2>] Terminate the EndPoint. This will cause
+					the EndPoint to automatically unregister the URI
+
+		[<Step 3>] Terminate again the EndPoint. No further
+					unregister request are sent.
+
+		[<Step 4>] Terminate the User Agent. No further
+					unregister request are sent for the last unregistered EndPoint.
+
+	    <<Automated by>> <<<com.kurento.ua.commons.junit.RegisterAndUnregisterTest#testRegisterAndUnregister>>>      
+
+	[]
+	
++-----------------
+ 1 - clientUA.registerEndpoint() >>> C:--- REGISTER REQUEST --->:S
+         REGISTER_USER_SUCESSFUL <<< C:<------ REGISTER OK -----:S
+ 2 - clientEndPoint.terminate() >>> C:--- UNREGISTER REQUEST --->:S
+      UNREGISTER_USER_SUCESSFUL <<< C:<------ UNREGISTER OK -----:S
+ 3 - clientEndPoint.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
+ 4 - clientUA.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
++-----------------
+
+ 	[<<Pass Criteria>>]
+
+		[[1]] Verify in <Step 1> a REGISTER_USER_SUCESSFUL event is received.
+
+		[[2]] Verify in <Step 2> a UNREGISTER_USER_SUCESSFUL event is received.
+
+		[[3]] Verify in <Step 3> the EndPoint is not sending any UNREGISTER request
+
+		[[4]] Verify in <Step 4> the EndPoint is not sending any UNREGISTER request
+
+
+
+
+* Register Time Out
+
+	User Agent (UA) must provide EndPoint registration.
+	If the registration is no successful because the server does not respond
+	after a time, a REGISTER_USER_FAIL event must be sent.
+	
+ 	[<<Test Procedure>>]
+
+		[<Step 1>] Request the UA to register a contact for a given URI in an unaccessible server.
+
+	    <<Automated by>> <<<com.kurento.ua.commons.junit.RegisterTimeOutTest#testRegisterTimeOut>>>      
+
+	[]
+	
++-----------------
+ 1 - clientUA.registerEndpoint() >>> C:--- REGISTER REQUEST --->:S
+              REGISTER_USER_FAIL <<< C:<--- REGISTER TIMEOUT
++-----------------
+
+ 	[<<Pass Criteria>>]
+
+		[[1]] Verify in <Step 1> a REGISTER_USER_FAIL event is received.
+
+
+
+
+
+
+
+
+
+

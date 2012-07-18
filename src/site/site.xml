@@ -12,6 +12,9 @@
 		<links>
 			<item name="Kurento" href="http://www.kurento.com/" />
 		</links>
+		<menu name="Documentation">
+			<item name="Test plan" href="./test-plan.html"/>
+		</menu>
 
 		<menu ref="reports" />
 
