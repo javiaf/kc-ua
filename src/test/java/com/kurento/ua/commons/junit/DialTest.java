@@ -149,6 +149,115 @@ public class DialTest {
 
 		log.info(" -------------------- testCallSetupAndDropFromCaller finished OK --------------------");
 	}
+
+	/**
+	 * Verify the UA is able to register a EndPoint for a given URI and it
+	 * manages its register/non-register status.
+	 * 
+	 * <pre>
+	 *  1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+	 *                CALL_RINGING <<< C:<----- DIAL REQUEST ARRIVED ---:S
+	 *  2 -             CALL_SETUP <<< C:<-------------- ACCEPT CALL ---:S <<< serverCall.accept()
+	 *                                 C:--- ACCEPT CALL ARRIVED ------>:S >>> CALL_SETUP
+	 *  3 -         CALL_TERMINATE <<< C:<--- TERMINATE CALL REQUEST ---:S <<< serverCall.terminate()
+	 *                                 C:--- TERMINATE CALL OK--------->:S >>> CALL_TERMINATE
+	 * </pre>
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCallSetupAndDropFromCallee() throws Exception {
+		log.debug("-------------------- testCallSetupAndDropFromCallee --------------------");
+
+		EndPointEvent endPointEvent;
+		CallEvent callEvent;
+
+		// 1 - clientEndPoint.dial() >>> C:------- DIAL REQUEST ------->:S >>>
+		// INCOMING_CALL
+		// CALL_RINGING <<< C:<--- DIAL REQUEST ARRIVED ---:S
+		log.info(clientName + " dial to " + serverName + "...");
+		CallListenerImpl clientCallListener = new CallListenerImpl(clientName);
+		Call clientCall = clientEndPoint.dial(serverEndPoint.getUri(),
+				clientCallListener);
+		log.info("OK");
+
+		log.info(serverName + " expects incoming call from " + clientName
+				+ "...");
+		EndPointListenerImpl serverEndPointListener = new EndPointListenerImpl(
+				serverName);
+		serverEndPoint.addListener(serverEndPointListener);
+		endPointEvent = serverEndPointListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", endPointEvent);
+		Assert.assertEquals("Bad message received in client UA: "
+				+ endPointEvent.getEventType(), EndPointEvent.INCOMING_CALL,
+				endPointEvent.getEventType());
+		Call serverCall = endPointEvent.getCallSource();
+		log.info("OK");
+
+		log.info(clientName + " expects ringing from " + serverName + "...");
+		callEvent = clientCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_RINGING,
+				callEvent.getEventType());
+		log.info("OK");
+
+		// 2 - CALL_SETUP <<< C:<------- ACCEPT CALL -------:S
+		// serverCall.accept()
+		// C:--- ACCEPT CALL ARRIVED --->:S >>> CALL_SETUP
+		log.info(serverName + " accepts call...");
+		CallListenerImpl serverCallListener = new CallListenerImpl(serverName);
+		serverCall.addListener(serverCallListener);
+		serverCall.accept();
+		log.info("OK");
+
+		log.info(clientName + " expects accepted call from " + serverName
+				+ "...");
+		callEvent = clientCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_SETUP,
+				callEvent.getEventType());
+		log.info("OK");
+
+		log.info(serverName + " expects ACK from " + clientName + "...");
+		callEvent = serverCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_SETUP,
+				callEvent.getEventType());
+		log.info("OK");
+
+		// 3 - CALL_TERMINATE <<< C:<--- TERMINATE CALL REQUEST ---:S <<<
+		// serverCall.terminate()
+		// C:--- TERMINATE CALL OK--------->:S >>> CALL_TERMINATE
+		log.info(serverName + " hangup...");
+		serverCall.terminate();
+		log.info("OK");
+
+		log.info(clientName + " expects call hangup from " + serverName + "...");
+		callEvent = clientCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_TERMINATE,
+				callEvent.getEventType());
+		log.info("OK");
+
+		log.info(serverName + " call terminate...");
+		callEvent = serverCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_TERMINATE,
+				callEvent.getEventType());
+		log.info("OK");
+
+
+		log.info(" -------------------- testCallSetupAndDropFromCallee finished OK --------------------");
 	}
 
 }
