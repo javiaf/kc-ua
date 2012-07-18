@@ -1,0 +1,39 @@
+package com.kurento.ua.commons.junit;
+
+import junit.framework.Assert;
+
+import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.kurento.ua.commons.EndPoint;
+import com.kurento.ua.commons.EndPointEvent;
+import com.kurento.ua.commons.junit.util.EndPointListenerImpl;
+
+public class RegisterTimeOutTest extends RegisterTest {
+
+	private final static Logger log = LoggerFactory
+			.getLogger(RegisterTimeOutTest.class);
+
+	@Test
+	public void testRegisterTimeOut() throws Exception {
+		log.debug("-------------------- testRegisterTimeOut --------------------");
+
+		log.info("Register user " + clientName + "...");
+		EndPointListenerImpl clientEndPointListener = new EndPointListenerImpl(
+				clientName);
+		EndPoint clientEndPoint = clientUA.registerEndpoint(clientName,
+				"kurento.com", clientEndPointListener, cEpConfig);
+
+		EndPointEvent endPointEvent = clientEndPointListener
+				.poll(WAIT_TIME * 10);
+		Assert.assertNotNull("No message received in client UA", endPointEvent);
+		Assert.assertEquals("Bad message received in client UA: "
+				+ endPointEvent.getEventType(),
+				EndPointEvent.REGISTER_USER_FAIL, endPointEvent.getEventType());
+		log.info("OK");
+
+		log.info(" -------------------- testRegisterTimeOut finished OK --------------------");
+	}
+
+}
