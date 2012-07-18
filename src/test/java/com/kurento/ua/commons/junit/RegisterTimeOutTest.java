@@ -38,12 +38,12 @@ public class RegisterTimeOutTest extends RegisterTest {
 		EndPoint clientEndPoint = clientUA.registerEndpoint(clientName,
 				"kurento.com", clientEndPointListener, cEpConfig);
 
-		EndPointEvent endPointEvent = clientEndPointListener.poll(WAIT_TIME);
+		EndPointEvent endPointEvent = clientEndPointListener
+				.poll(WAIT_TIME * 10);
 		Assert.assertNotNull("No message received in client UA", endPointEvent);
 		Assert.assertEquals("Bad message received in client UA: "
 				+ endPointEvent.getEventType(),
-				EndPointEvent.REGISTER_USER_SUCESSFUL,
-				endPointEvent.getEventType());
+				EndPointEvent.REGISTER_USER_FAIL, endPointEvent.getEventType());
 		log.info("OK");
 
 		log.info(" -------------------- testRegisterTimeOut finished OK --------------------");
