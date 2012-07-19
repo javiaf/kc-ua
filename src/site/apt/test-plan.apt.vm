@@ -30,6 +30,8 @@ User Agent Test Plan
 		
 		* {{Reject Call}}
 		
+		* {{Dials from 2 callers}}
+		
 		
 
 * {Register and Unregister}
@@ -271,3 +273,62 @@ User Agent Test Plan
 			[[a]] Client EndPoint receives a CALL_REJECT event.
 			
 			[[b]] Server EndPoint receives a CALL_REJECT event.
+
+
+
+
+* {Dials from 2 callers}
+
+	EndPoint must be able to receive simultaneously 2 or more dials.
+
+	[<<Test Procedure>>]
+
+		[<Step 1>] Client EndPoint 1 dials to the server EndPoint.
+		
+		[<Step 2>] Client EndPoint 2 dials to the server EndPoint.
+
+		[<Step 3>] Server EndPoint rejects the call of the Client EndPoint 1.
+		
+		[<Step 4>] Server EndPoint rejects the call of the Client EndPoint 2.
+
+	    <<Automated by>> <<<com.kurento.ua.commons.junit.DialTest#testRejectCall>>>
+
+	[]
+	
++-----------------
+ 1 -  clientEndPoint1.dial() >>> C1:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+                CALL_RINGING <<< C1:<----- DIAL REQUEST ARRIVED ---:S
+ 2 -  clientEndPoint2.dial() >>> C2:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+                CALL_RINGING <<< C2:<----- DIAL REQUEST ARRIVED ---:S
+ 3 -             CALL_REJECT <<< C1:<-------------- REJECT CALL ---:S <<< serverCall1.terminate()
+                                 C1:--- REJECT CALL OK------------>:S >>> CALL_REJECT
+ 4 -             CALL_REJECT <<< C2:<-------------- REJECT CALL ---:S <<< serverCall2.terminate()
+                                 C2:--- REJECT CALL OK------------>:S >>> CALL_REJECT
++-----------------
+
+ 	[<<Pass Criteria>>]
+
+		[[1]] Verify in <Step 1>:
+		
+			[[a]] Server EndPoint receives a INCOMING_CALL event.
+			
+			[[b]] Client EndPoint 1 receives a CALL_RINGING event.
+
+		[[2]] Verify in <Step 2>:
+		
+			[[a]] Server EndPoint receives a INCOMING_CALL event.
+			
+			[[b]] Client EndPoint 2 receives a CALL_RINGING event.
+			
+		[[3]] Verify in <Step 3>:
+		
+			[[a]] Client EndPoint receives a CALL_REJECT event.
+			
+			[[b]] Server EndPoint 1 receives a CALL_REJECT event.
+
+		[[4]] Verify in <Step 4>:
+		
+			[[a]] Client EndPoint receives a CALL_REJECT event.
+			
+			[[b]] Server EndPoint 2 receives a CALL_REJECT event.
+
