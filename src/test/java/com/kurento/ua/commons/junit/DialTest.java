@@ -42,8 +42,8 @@ public class DialTest {
 	}
 
 	/**
-	 * Verify the UA is able to register a EndPoint for a given URI and it
-	 * manages its register/non-register status.
+	 * Verify the EndPoint is able to dial other peer and the caller can hang up
+	 * the call.
 	 * 
 	 * <pre>
 	 *  1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
@@ -151,8 +151,8 @@ public class DialTest {
 	}
 
 	/**
-	 * Verify the UA is able to register a EndPoint for a given URI and it
-	 * manages its register/non-register status.
+	 * Verify the EndPoint is able to dial other peer and the callee can hang up
+	 * the call.
 	 * 
 	 * <pre>
 	 *  1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
