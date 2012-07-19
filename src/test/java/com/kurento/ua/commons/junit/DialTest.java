@@ -261,15 +261,162 @@ public class DialTest {
 
 		log.info(" -------------------- testCallSetupAndDropFromCallee finished OK --------------------");
 	}
+
+	/**
+	 * Verify the EndPoint is able to dial other peer and cancel it before the
+	 * other peer accepts the call.
+	 * 
+	 * <pre>
+	 *  1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+	 *                CALL_RINGING <<< C:<----- DIAL REQUEST ARRIVED ---:S
+	 *  2 - clientCall.terminate() >>> C:--- CANCEL CALL -------------->:S >>> CALL_CANCEL
+	 *                 CALL_CANCEL <<< C:<----------- CANCEL CALL OK ---:S
+	 * </pre>
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCancelCall() throws Exception {
+		log.debug("-------------------- testCallSetupAndDropFromCallerBeforAccept --------------------");
+
+		EndPointEvent endPointEvent;
+		CallEvent callEvent;
+
+		// 1 - clientEndPoint.dial() >>> C:------- DIAL REQUEST ------->:S >>>
+		// INCOMING_CALL
+		// CALL_RINGING <<< C:<--- DIAL REQUEST ARRIVED ---:S
+		log.info(clientName + " dial to " + serverName + "...");
+		CallListenerImpl clientCallListener = new CallListenerImpl(clientName);
+		Call clientCall = clientEndPoint.dial(serverEndPoint.getUri(),
+				clientCallListener);
+		log.info("OK");
+
+		log.info(serverName + " expects incoming call from " + clientName
+				+ "...");
+		endPointEvent = serverEndPointListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in server UA", endPointEvent);
+		Assert.assertEquals("Bad message received in server UA: "
+				+ endPointEvent.getEventType(), EndPointEvent.INCOMING_CALL,
+				endPointEvent.getEventType());
+		Call serverCall = endPointEvent.getCallSource();
+		CallListenerImpl serverCallListener = new CallListenerImpl(serverName);
+		serverCall.addListener(serverCallListener);
+		log.info("OK");
+
+		log.info(clientName + " expects ringing from " + serverName + "...");
+		callEvent = clientCallListener.poll(WAIT_TIME);
 		Assert.assertNotNull("No message received in client UA", callEvent);
 		Assert.assertEquals(
 				"Bad message received in client UA: "
-						+ callEvent.getEventType(), CallEvent.CALL_TERMINATE,
+						+ callEvent.getEventType(), CallEvent.CALL_RINGING,
 				callEvent.getEventType());
 		log.info("OK");
 
+		// 2 - clientCall.terminate() >>> C:--- CANCEL CALL -------------->:S
+		// >>> CALL_CANCEL
+		// CALL_CANCEL <<< C:<----------- CANCEL CALL OK ---:S
+		log.info(clientName + " hangup...");
+		clientCall.terminate();
+		log.info("OK");
 
-		log.info(" -------------------- testCallSetupAndDropFromCallee finished OK --------------------");
+		log.info(serverName + " expects call cancel from " + clientName + "...");
+		log.info(clientName + " call terminate...");
+		callEvent = serverCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in server UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in server UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_CANCEL,
+				callEvent.getEventType());
+		log.info("OK");
+
+		log.info(clientName + " call cancel...");
+		callEvent = clientCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_CANCEL,
+				callEvent.getEventType());
+		log.info("OK");
+
+		log.info(" -------------------- testCallSetupAndDropFromCallerBeforAccept finished OK --------------------");
+	}
+
+	/**
+	 * Verify call is terminated in both sides after the caller party rejects
+	 * the dial request.
+	 * 
+	 * <pre>
+	 *  1 -  clientEndPoint.dial() >>> C:--- DIAL REQUEST ------------->:S >>> INCOMING_CALL
+	 *                CALL_RINGING <<< C:<----- DIAL REQUEST ARRIVED ---:S
+	 *  2 -            CALL_REJECT <<< C:<-------------- REJECT CALL ---:S <<< serverCall.terminate()
+	 *                                 C:--- REJECT CALL OK------------>:S >>> CALL_REJECT
+	 * </pre>
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testRejectCall() throws Exception {
+		log.debug("-------------------- testCallSetupAndDropFromCallerBeforAccept --------------------");
+
+		EndPointEvent endPointEvent;
+		CallEvent callEvent;
+
+		// 1 - clientEndPoint.dial() >>> C:------- DIAL REQUEST ------->:S >>>
+		// INCOMING_CALL
+		// CALL_RINGING <<< C:<--- DIAL REQUEST ARRIVED ---:S
+		log.info(clientName + " dial to " + serverName + "...");
+		CallListenerImpl clientCallListener = new CallListenerImpl(clientName);
+		Call clientCall = clientEndPoint.dial(serverEndPoint.getUri(),
+				clientCallListener);
+		log.info("OK");
+
+		log.info(serverName + " expects incoming call from " + clientName
+				+ "...");
+		endPointEvent = serverEndPointListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in server UA", endPointEvent);
+		Assert.assertEquals("Bad message received in server UA: "
+				+ endPointEvent.getEventType(), EndPointEvent.INCOMING_CALL,
+				endPointEvent.getEventType());
+		Call serverCall = endPointEvent.getCallSource();
+		CallListenerImpl serverCallListener = new CallListenerImpl(serverName);
+		serverCall.addListener(serverCallListener);
+		log.info("OK");
+
+		log.info(clientName + " expects ringing from " + serverName + "...");
+		callEvent = clientCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_RINGING,
+				callEvent.getEventType());
+		log.info("OK");
+
+		// 2 - CALL_REJECT <<< C:<-------------- REJECT CALL ---:S <<<
+		// serverCall.terminate()
+		// C:--- REJECT CALL OK------------>:S >>> CALL_REJECT
+		log.info(clientName + " hangup...");
+		serverCall.terminate();
+		log.info("OK");
+
+		log.info(clientName + " expects call reject from " + serverName + "...");
+		callEvent = clientCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in client UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_REJECT,
+				callEvent.getEventType());
+		log.info("OK");
+
+		log.info(serverName + " expects call reject...");
+		callEvent = serverCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in server UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in server UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_REJECT,
+				callEvent.getEventType());
+		log.info("OK");
+
+		log.info(" -------------------- testCallSetupAndDropFromCallerBeforAccept finished OK --------------------");
 	}
 
 }
