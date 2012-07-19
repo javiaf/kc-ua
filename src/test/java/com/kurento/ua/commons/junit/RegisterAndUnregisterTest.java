@@ -37,12 +37,12 @@ public class RegisterAndUnregisterTest extends RegisterTest {
 	 * manages its register/non-register status.
 	 * 
 	 * <pre>
-	 *  1 - clientUA.registerEndpoint() >>> C:--- REGISTER REQUEST --->:S
-	 *          REGISTER_USER_SUCESSFUL <<< C:<------ REGISTER OK -----:S
-	 *  2 - clientEndPoint.terminate() >>> C:--- UNREGISTER REQUEST --->:S
-	 *       UNREGISTER_USER_SUCESSFUL <<< C:<------ UNREGISTER OK -----:S
-	 *  3 - clientEndPoint.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
-	 *  4 - clientUA.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
+	 *  1 - clientUA.registerEndpoint() >>> C:--- REGISTER REQUEST ----->:S
+	 *          REGISTER_USER_SUCESSFUL <<< C:<---------- REGISTER OK ---:S
+	 *  2 -  clientEndPoint.terminate() >>> C:--- UNREGISTER REQUEST --->:S
+	 *        UNREGISTER_USER_SUCESSFUL <<< C:<-------- UNREGISTER OK ---:S
+	 *  3 -  clientEndPoint.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
+	 *  4 -        clientUA.terminate() >>> C: Verify no UNREGISTER REQUEST is sent (EP is already unregistered)
 	 * </pre>
 	 * 
 	 * @throws Exception
