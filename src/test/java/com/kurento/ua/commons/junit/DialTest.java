@@ -84,8 +84,8 @@ public class DialTest {
 		log.info(serverName + " expects incoming call from " + clientName
 				+ "...");
 		endPointEvent = serverEndPointListener.poll(WAIT_TIME);
-		Assert.assertNotNull("No message received in client UA", endPointEvent);
-		Assert.assertEquals("Bad message received in client UA: "
+		Assert.assertNotNull("No message received in server UA", endPointEvent);
+		Assert.assertEquals("Bad message received in server UA: "
 				+ endPointEvent.getEventType(), EndPointEvent.INCOMING_CALL,
 				endPointEvent.getEventType());
 		Call serverCall = endPointEvent.getCallSource();
@@ -121,9 +121,9 @@ public class DialTest {
 
 		log.info(serverName + " expects ACK from " + clientName + "...");
 		callEvent = serverCallListener.poll(WAIT_TIME);
-		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertNotNull("No message received in server UA", callEvent);
 		Assert.assertEquals(
-				"Bad message received in client UA: "
+				"Bad message received in server UA: "
 						+ callEvent.getEventType(), CallEvent.CALL_SETUP,
 				callEvent.getEventType());
 		log.info("OK");
@@ -137,9 +137,9 @@ public class DialTest {
 
 		log.info(serverName + " expects call hangup from " + clientName + "...");
 		callEvent = serverCallListener.poll(WAIT_TIME);
-		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertNotNull("No message received in server UA", callEvent);
 		Assert.assertEquals(
-				"Bad message received in client UA: "
+				"Bad message received in server UA: "
 						+ callEvent.getEventType(), CallEvent.CALL_TERMINATE,
 				callEvent.getEventType());
 		log.info("OK");
@@ -190,8 +190,8 @@ public class DialTest {
 		log.info(serverName + " expects incoming call from " + clientName
 				+ "...");
 		endPointEvent = serverEndPointListener.poll(WAIT_TIME);
-		Assert.assertNotNull("No message received in client UA", endPointEvent);
-		Assert.assertEquals("Bad message received in client UA: "
+		Assert.assertNotNull("No message received in server UA", endPointEvent);
+		Assert.assertEquals("Bad message received in server UA: "
 				+ endPointEvent.getEventType(), EndPointEvent.INCOMING_CALL,
 				endPointEvent.getEventType());
 		Call serverCall = endPointEvent.getCallSource();
@@ -227,9 +227,9 @@ public class DialTest {
 
 		log.info(serverName + " expects ACK from " + clientName + "...");
 		callEvent = serverCallListener.poll(WAIT_TIME);
-		Assert.assertNotNull("No message received in client UA", callEvent);
+		Assert.assertNotNull("No message received in server UA", callEvent);
 		Assert.assertEquals(
-				"Bad message received in client UA: "
+				"Bad message received in server UA: "
 						+ callEvent.getEventType(), CallEvent.CALL_SETUP,
 				callEvent.getEventType());
 		log.info("OK");
