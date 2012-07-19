@@ -252,6 +252,15 @@ public class DialTest {
 
 		log.info(serverName + " call terminate...");
 		callEvent = serverCallListener.poll(WAIT_TIME);
+		Assert.assertNotNull("No message received in server UA", callEvent);
+		Assert.assertEquals(
+				"Bad message received in server UA: "
+						+ callEvent.getEventType(), CallEvent.CALL_TERMINATE,
+				callEvent.getEventType());
+		log.info("OK");
+
+		log.info(" -------------------- testCallSetupAndDropFromCallee finished OK --------------------");
+	}
 		Assert.assertNotNull("No message received in client UA", callEvent);
 		Assert.assertEquals(
 				"Bad message received in client UA: "
