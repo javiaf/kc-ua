@@ -2,6 +2,7 @@ package com.kurento.ua.commons.junit;
 
 import junit.framework.Assert;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,8 @@ public class DialTest {
 	private static EndPoint serverEndPoint;
 	private static EndPoint clientEndPoint;
 
+	private static EndPointListenerImpl serverEndPointListener;
+
 	private static String serverName = "server";
 	private static String clientName = "client";
 
@@ -39,6 +42,12 @@ public class DialTest {
 
 	public static void setServerEndPoint(EndPoint serverEndPoint) {
 		DialTest.serverEndPoint = serverEndPoint;
+	}
+
+	@Before
+	public void setupEndPointListeners() {
+		serverEndPointListener = new EndPointListenerImpl(serverName);
+		serverEndPoint.addListener(serverEndPointListener);
 	}
 
 	/**
@@ -74,9 +83,6 @@ public class DialTest {
 
 		log.info(serverName + " expects incoming call from " + clientName
 				+ "...");
-		EndPointListenerImpl serverEndPointListener = new EndPointListenerImpl(
-				serverName);
-		serverEndPoint.addListener(serverEndPointListener);
 		endPointEvent = serverEndPointListener.poll(WAIT_TIME);
 		Assert.assertNotNull("No message received in client UA", endPointEvent);
 		Assert.assertEquals("Bad message received in client UA: "
@@ -183,9 +189,6 @@ public class DialTest {
 
 		log.info(serverName + " expects incoming call from " + clientName
 				+ "...");
-		EndPointListenerImpl serverEndPointListener = new EndPointListenerImpl(
-				serverName);
-		serverEndPoint.addListener(serverEndPointListener);
 		endPointEvent = serverEndPointListener.poll(WAIT_TIME);
 		Assert.assertNotNull("No message received in client UA", endPointEvent);
 		Assert.assertEquals("Bad message received in client UA: "
