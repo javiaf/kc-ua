@@ -2,10 +2,10 @@ package com.kurento.commons.ua;
 
 import java.util.Map;
 
-import com.kurento.commons.media.format.enums.MediaType;
-import com.kurento.commons.media.format.enums.Mode;
-import com.kurento.commons.mscontrol.networkconnection.NetworkConnection;
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
+import com.kurento.mediaspec.MediaType;
+import com.kurento.mediaspec.Mode;
+import com.kurento.mscontrol.commons.networkconnection.NetworkConnection;
 
 /**
  * The Call provides a management interface to a Dialog between the local and
