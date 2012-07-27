@@ -3,8 +3,8 @@ package com.kurento.commons.ua;
 import java.util.Map;
 
 import com.kurento.commons.ua.exception.ServerInternalErrorException;
+import com.kurento.mediaspec.Direction;
 import com.kurento.mediaspec.MediaType;
-import com.kurento.mediaspec.Mode;
 import com.kurento.mscontrol.commons.networkconnection.NetworkConnection;
 
 /**
@@ -94,18 +94,19 @@ public interface Call {
 	public NetworkConnection getNetworkConnection();
 
 	/**
-	 * Returns the connection mode for each media type. Available modes are
+	 * Returns the connection direction for each media type. Available
+	 * directions are
 	 * <ul>
 	 * <li>SENDRECV: Both peers will send and receive media
 	 * <li>RECV: Local peer will receive media send by remote peer
 	 * <li>SEND: remote peer will receive media send by local peer
 	 * </ul>
-	 * Connection mode is independent for each media channel. That means a peer
-	 * can be sending video to the other with DUPLEX audio connection
+	 * Connection direction is independent for each media channel. That means a
+	 * peer can be sending video to the other with DUPLEX audio connection
 	 * 
-	 * @return map with connection modes for each media type
+	 * @return map with connection directions for each media type
 	 */
-	public Map<MediaType, Mode> getMediaTypesModes();
+	public Map<MediaType, Direction> getMediaTypesModes();
 
 	/**
 	 * Get Uri of remote peer for this call
