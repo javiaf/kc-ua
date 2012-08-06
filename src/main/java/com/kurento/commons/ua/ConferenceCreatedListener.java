@@ -1,6 +1,5 @@
 package com.kurento.commons.ua;
 
-import com.kurento.commons.ua.Conference;
 
 public interface ConferenceCreatedListener {
 
