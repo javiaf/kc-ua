@@ -15,15 +15,9 @@ public interface Conference extends Call {
 
 	public void setMute(String connectionId, Boolean mute);
 
-	public String getMyConnectionId();
+	public Connection getOwnConnection();
 
-	public void getConnections(Continuation<Collection<String>, Void> cont);
-
-	public void getConnectionUri(String connection,
-			Continuation<String, Void> cont);
-
-	public void getConnectionMain(String connection,
-			Continuation<Boolean, Void> cont);
+	public Collection<Connection> getConnections();
 
 	/**
 	 * Add a new listener object that will receive conference events

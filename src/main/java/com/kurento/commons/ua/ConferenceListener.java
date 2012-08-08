@@ -3,13 +3,11 @@ package com.kurento.commons.ua;
 
 public interface ConferenceListener {
 
-	void onMainStatusChanged(String connectionId, Boolean main);
+	void onMainStatusChanged(Connection connectionId, Boolean main);
 
-	void onMuteStatusChanged(String connectionId, Boolean muteStatus);
+	void onConnectionAdded(Connection connection);
 
-	void onConnectionAdded(String connectionId);
-
-	void onConnectionRemoved(String connectionId);
+	void onConnectionRemoved(Connection connection);
 
 	void onTerminated();
 }
