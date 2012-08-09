@@ -20,7 +20,7 @@ public class ConnectionMessage {
 		this.data = data;
 	}
 
-	public Connection getReplyToId() {
+	public Connection getReplyTo() {
 		return replyTo;
 	}
 
