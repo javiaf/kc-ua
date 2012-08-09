@@ -27,4 +27,22 @@ public class ConnectionMessage {
 	public Map<String, String> getData() {
 		return data;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ConnectionMessage [");
+		if (replyTo != null) {
+			builder.append("replyTo=");
+			builder.append(replyTo);
+			builder.append(", ");
+		}
+		if (data != null) {
+			builder.append("data=");
+			builder.append(data);
+		}
+		builder.append("]");
+		return builder.toString();
+	}
+
 }
