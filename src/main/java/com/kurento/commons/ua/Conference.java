@@ -15,7 +15,7 @@ public interface Conference extends Call {
 
 	public void setMute(String connectionId, Boolean mute);
 
-	public Connection getOwnConnection();
+	public String getOwnConnectionId();
 
 	public Collection<Connection> getConnections();
 
