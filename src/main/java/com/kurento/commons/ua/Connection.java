@@ -8,6 +8,8 @@ public interface Connection {
 
 	public void isMain(Continuation<Boolean, Void> continuation);
 
+	public void sendMessage(ConnectionMessage message);
+
 	/**
 	 * Add a new listener object that will receive conference events
 	 */
@@ -20,4 +22,8 @@ public interface Connection {
 	 * @param listener
 	 */
 	public void removeListener(ConnectionListener listener);
+
+	public void addListener(ConnectionMessageListener listener);
+
+	public void removeListener(ConnectionMessageListener listener);
 }
