@@ -2,6 +2,8 @@ package com.kurento.commons.ua.exception;
 
 public class UserNotFoundException extends Exception {
 
+	private static final long serialVersionUID = -1768194273813680527L;
+
 	public UserNotFoundException() {
 		// TODO Auto-generated constructor stub
 	}

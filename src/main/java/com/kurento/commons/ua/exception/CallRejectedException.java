@@ -2,6 +2,8 @@ package com.kurento.commons.ua.exception;
 
 public class CallRejectedException extends Exception {
 
+	private static final long serialVersionUID = 3767027729925734704L;
+
 	public CallRejectedException() {
 		// TODO Auto-generated constructor stub
 	}
