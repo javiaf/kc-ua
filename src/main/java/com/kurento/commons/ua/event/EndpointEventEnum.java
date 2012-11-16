@@ -43,5 +43,9 @@ public enum EndpointEventEnum {
 	/**
 	 * Internal error within the local party prevents a normal negotiation flow
 	 */
-	SERVER_INTERNAL_ERROR
+	SERVER_INTERNAL_ERROR,
+	/**
+	 * This event signals a problem with authorization
+	 */
+	AUTHORIZATION_FAILURE,
 }

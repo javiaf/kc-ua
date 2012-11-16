@@ -39,7 +39,7 @@ public interface UA {
 	 * Allows the application to register a service Endpoint connected to the UA
 	 * communication domain.
 	 * 
-	 * @param user
+	 * @param uriUser
 	 *            Together with the domain provides the Service Endpoint name,
 	 *            i.e. the id used by this Endpoint to become uniquelly
 	 *            identified within the communication domain where the UA is
@@ -55,9 +55,37 @@ public interface UA {
 	 * @return
 	 * @throws ServerInternalErrorException
 	 */
-	public EndPoint registerEndpoint(String user, String domain,
+	public EndPoint registerEndpoint(String uriUser, String domain,
 			EndPointListener listener, Map<String, Object> extra)
 			throws ServerInternalErrorException;
+
+	/**
+	 * Allows the application to register a service Endpoint connected to the UA
+	 * communication domain.
+	 * 
+	 * @param uriUser
+	 *            Together with the domain provides the Service Endpoint name,
+	 *            i.e. the id used by this Endpoint to become uniquelly
+	 *            identified within the communication domain where the UA is
+	 *            connected
+	 * @param domain
+	 * @param listener
+	 *            Native listener the Endpoint will send events
+	 * @param user
+	 *            The user for authenticating registering process
+	 * @param passwd
+	 *            The password for authenticating registering process
+	 * @param extra
+	 *            A set of extra configuration parameters given as [key, value]
+	 *            pairs, required by the UA to set up the Endpoint. Refer to
+	 *            specific UA implementations to find out the extra
+	 *            configuration settings
+	 * @return
+	 * @throws ServerInternalErrorException
+	 */
+	public EndPoint registerEndpoint(String uriUser, String domain,
+			EndPointListener listener, String user, String passwd,
+			Map<String, Object> extra) throws ServerInternalErrorException;
 
 	public void unregisterEndpoint(EndPoint endpoint) throws ServerInternalErrorException;
 }

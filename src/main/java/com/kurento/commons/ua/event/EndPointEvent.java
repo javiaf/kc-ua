@@ -60,8 +60,12 @@ public class EndPointEvent extends EventObject {
 	 * Internal error within the local party prevents a normal negotiation flow
 	 */
 	public static final EndpointEventEnum SERVER_INTERNAL_ERROR = EndpointEventEnum.SERVER_INTERNAL_ERROR;
+	/**
+	 * This event signals a problem with authorization
+	 */
+	public static final EndpointEventEnum AUTHORIZATION_FAILURE = EndpointEventEnum.AUTHORIZATION_FAILURE;
 
-	private EndpointEventEnum eventType;
+	private final EndpointEventEnum eventType;
 
 	/**
 	 * This constructor allows to create an event whose source is a call managed
@@ -163,6 +167,7 @@ public class EndPointEvent extends EventObject {
 		return eventType;
 	}
 
+	@Override
 	public String toString() {
 		return eventType.toString();
 	}
