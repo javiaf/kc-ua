@@ -2,6 +2,8 @@ package com.kurento.commons.ua;
 
 public interface Connection {
 
+	public Conference getConference();
+
 	public void getUri(Continuation<String, Void> continuation);
 
 	public String getId();
